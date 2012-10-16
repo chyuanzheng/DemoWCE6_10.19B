@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout  
+       layout_width="fill_parent"
+       layout_height="fill_parent"
+       background="\res\back1"
+>
+
+  <Button
+            layout_x="0"
+            layout_y="40"
+            layout_width="200"
+            layout_height="200"
+            btn_down = "\res\home1.png"
+            btn_up = "\res\home2.png"
+   />
+</AbsoluteLayout>

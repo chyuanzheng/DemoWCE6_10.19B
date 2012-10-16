@@ -1,0 +1,136 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BACKGROUND          BITMAP                  "res\\Calendar_background.bmp"
+IDB_EXIT_UP             BITMAP                  "res\\ExitUp.bmp"
+IDB_EXIT_DOWN           BITMAP                  "res\\ExitDown.bmp"
+IDB_FOCUS               BITMAP                  "res\\Focus.bmp"
+IDB_BACK_UP             BITMAP                  "res\\Back_up.bmp"
+IDB_BACK_DOWN           BITMAP                  "res\\Back_down.bmp"
+IDB_MEMO_BACKGROUND     BITMAP                  "res\\memo_background.bmp"
+IDB_ICON1               BITMAP                  "res\\icon.bmp"
+IDB_NEXT_DAT_DOWN       BITMAP                  "res\\next_day_down.bmp"
+IDB_PRE_DAY_DOWN        BITMAP                  "res\\pre_day_down.bmp"
+IDB_DEL_MEMO_DOWN       BITMAP                  "res\\delete_memo_down.bmp"
+IDB_ADD_MEMO_DWON       BITMAP                  "res\\add_memo_down.bmp"
+IDB_CT_BACKGROUND       BITMAP                  "res\\content_background.bmp"
+IDB_SAVE_DOWN           BITMAP                  "res\\Ok_down.bmp"
+IDB_REDUCE_UP           BITMAP                  "res\\reduce_up.bmp"
+IDB_REDUCE_DOWN         BITMAP                  "res\\reduce_down.bmp"
+IDB_PLUS_DOWN           BITMAP                  "res\\plus_down.bmp"
+IDB_PLUS_UP             BITMAP                  "res\\plus_up.bmp"
+
+
+STRINGTABLE 
+BEGIN
+    IDS_BACK                "res\\Calendar_background.bmp"
+    IDS_OK_UP               "res\\Ok_up2.jpg"
+    IDS_OK_DOWN             "res\\Ok_down2.jpg"
+    IDS_EXIT_UP             "res\\ExitUp.bmp"
+    IDS_EXIT_DOWN           "res\\ExitDown.bmp"
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
