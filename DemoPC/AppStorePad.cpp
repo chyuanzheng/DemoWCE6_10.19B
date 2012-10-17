@@ -1,5 +1,5 @@
 #include "../common/stdAfx.h"
-#include "OpenBoard.h"
+#include "AppStorePad.h"
 #include "resource.h"
 #include "Event.h"
 #include "Position.h"
@@ -49,8 +49,8 @@ const RECT  TIME_E = { 655, 9 ,655+70,9+22 };
 const RECT  WAIT_E = { 200, 200 ,600,280 };
 
 #define  TIME_ID   100
-OpenBoard::OpenBoard (HWND hwnd,BaseBoard* pParentBoard)
-    :BaseBoard(hwnd,pParentBoard)
+AppStorePad::AppStorePad (HWND hwnd,Activity* pParentBoard)
+    :Activity(hwnd,pParentBoard)
 {
 // Init 函数将控件的主要属性设定好，其他属性可通过函数来设定。
 
@@ -100,16 +100,16 @@ OpenBoard::OpenBoard (HWND hwnd,BaseBoard* pParentBoard)
 	m_hProcess = NULL;
 
 }
-OpenBoard::~OpenBoard ()
+AppStorePad::~AppStorePad ()
 {
 	
 }
 
-void   OpenBoard::Draw( HDC hdcDst ) 
+void   AppStorePad::Draw( HDC hdcDst ) 
 {
-    BaseBoard::Draw( hdcDst );
+    Activity::Draw( hdcDst );
 }
-BOOL   OpenBoard::Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam )
+BOOL   AppStorePad::Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam )
 {
     switch( nMsg )
     {
@@ -146,7 +146,7 @@ BOOL   OpenBoard::Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam )
     }
     return FALSE;
 }
-void  OpenBoard::OnGoBack()
+void  AppStorePad::OnGoBack()
 {
 	//if (GetEVDOStatus()== IDS_RAS_CONNECTED)
 	//{
@@ -160,34 +160,34 @@ void  OpenBoard::OnGoBack()
     DestroyBoard();
 }
 
-void OpenBoard::OnPlayFlash()
+void AppStorePad::OnPlayFlash()
 {
 	CreatePlay(L"\\NandFlash\\demo3\\flash");
 }
 
-void OpenBoard::OnPlayMovie()
+void AppStorePad::OnPlayMovie()
 {
 	CreatePlay(L"\\NandFlash\\demo3\\movie");
 }
 
-void OpenBoard::OnPlayPaper()
+void AppStorePad::OnPlayPaper()
 {
 	CreatePlay(L"\\NandFlash\\TabletSoft\\TabletSoft");
 }
-void OpenBoard::OnPlayWeb()
+void AppStorePad::OnPlayWeb()
 {
 
 	OnStartAWeb(_T("http://www.hao123.com"));
 
 }
 
-void OpenBoard::OnPlaySpeed()
+void AppStorePad::OnPlaySpeed()
 {
 	//OnStartAWeb(_T("http://news.sxrtv.com/speedtest.htm"));
 	OnStartAWeb(_T("http://www.bjnet.net.cn/dkcs/BarTest.html"));
 }
 
-BOOL OpenBoard::CreatePlay( const WCHAR *path )
+BOOL AppStorePad::CreatePlay( const WCHAR *path )
 {
 	if (m_hProcess != NULL)
 	{
@@ -208,7 +208,7 @@ BOOL OpenBoard::CreatePlay( const WCHAR *path )
 	return TRUE;
 }
 
-BOOL OpenBoard::OnTimer( UINT id )
+BOOL AppStorePad::OnTimer( UINT id )
 {
 	if (id != TIME_ID)
 	{
@@ -234,7 +234,7 @@ BOOL OpenBoard::OnTimer( UINT id )
 	return TRUE;
 }
 
-void OpenBoard::OnPlayShut(WPARAM wparam,LPARAM lparam)
+void AppStorePad::OnPlayShut(WPARAM wparam,LPARAM lparam)
 {
 	if(UINT(lparam) == 0x300)
 	{
@@ -242,7 +242,7 @@ void OpenBoard::OnPlayShut(WPARAM wparam,LPARAM lparam)
 	}
 }
 
-void OpenBoard::OnStartAWeb( const WCHAR * web )//
+void AppStorePad::OnStartAWeb( const WCHAR * web )//
 {
 	if (m_hProcess != NULL)
 	{
@@ -299,7 +299,7 @@ void OpenBoard::OnStartAWeb( const WCHAR * web )//
 	}
 }
 
-void OpenBoard::OnPlayWifi()
+void AppStorePad::OnPlayWifi()
 {
 	WifiBoard *pWifi = new WifiBoard(m_hWnd,this);
 	pWifi->DoModal();

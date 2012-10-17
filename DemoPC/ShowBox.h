@@ -2,13 +2,13 @@
 #include "../common/Button.h"
 #include "../common/Edit.h"
 
-#include "../common/BaseBoard.h"
+#include "../common/Activity.h"
 
 
-class ShowBox : public BaseBoard
+class ShowBox : public Activity
 {
 public:
-    ShowBox(HWND hwnd, BaseBoard* pParentBoard = NULL);
+    ShowBox(HWND hwnd, Activity* pParentBoard = NULL);
 	virtual ~ShowBox ();
     virtual void   Draw( HDC hdcDst ) ;
 	virtual BOOL   Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam );

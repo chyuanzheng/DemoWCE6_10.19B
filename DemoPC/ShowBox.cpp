@@ -31,8 +31,8 @@ const RECT  SHOW_CANCEL = { 258, 255 ,258+283,255+70 };
 
 
 #define  TIME_ID   100
-ShowBox::ShowBox (HWND hwnd,BaseBoard* pParentBoard)
-    :BaseBoard(hwnd,pParentBoard)
+ShowBox::ShowBox (HWND hwnd,Activity* pParentBoard)
+    :Activity(hwnd,pParentBoard)
 {
 // Init 函数将控件的主要属性设定好，其他属性可通过函数来设定。
 
@@ -57,7 +57,7 @@ ShowBox::~ShowBox ()
 
 void   ShowBox::Draw( HDC hdcDst ) 
 {
-    BaseBoard::Draw( hdcDst );
+    Activity::Draw( hdcDst );
 }
 BOOL   ShowBox::Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam )
 {

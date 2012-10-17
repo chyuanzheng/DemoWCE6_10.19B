@@ -114,8 +114,6 @@ UINT CImagesManager::AddImage( const TCHAR* file )
 {
 	UINT ResID = GetAFreeID();
 
-
-
 	PARGBImageInfo* imageinfo = (PARGBImageInfo*)::LocalAlloc(LPTR,sizeof(PARGBImageInfo));
 	if(GetImageFromFile(file,imageinfo))
 	{

@@ -28,8 +28,8 @@ const RECT  WIFI_AP_E   = {20,0,20+180,0+60};
 
 
 #define  TIME_ID   100
-WifiBoard::WifiBoard (HWND hwnd,BaseBoard* pParentBoard)
-    :BaseBoard(hwnd,pParentBoard)
+WifiBoard::WifiBoard (HWND hwnd,Activity* pParentBoard)
+    :Activity(hwnd,pParentBoard)
 {
 // Init 函数将控件的主要属性设定好，其他属性可通过函数来设定。
 
@@ -57,7 +57,7 @@ WifiBoard::~WifiBoard ()
 
 void   WifiBoard::Draw( HDC hdcDst ) 
 {
-    BaseBoard::Draw( hdcDst );
+    Activity::Draw( hdcDst );
 }
 BOOL   WifiBoard::Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam )
 {

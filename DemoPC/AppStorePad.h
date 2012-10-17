@@ -1,14 +1,14 @@
 #pragma once
 #include "../common/Button.h"
 #include "../common/Edit.h"
-#include "../common/BaseBoard.h"
+#include "../common/Activity.h"
 
 
-class OpenBoard : public BaseBoard
+class AppStorePad : public Activity
 {
 public:
-    OpenBoard(HWND hwnd, BaseBoard* pParentBoard = NULL);
-	virtual ~OpenBoard ();
+    AppStorePad(HWND hwnd, Activity* pParentBoard = NULL);
+	virtual ~AppStorePad ();
     virtual void   Draw( HDC hdcDst ) ;
 	virtual BOOL   Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam );
 

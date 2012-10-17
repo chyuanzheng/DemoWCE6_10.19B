@@ -1,7 +1,7 @@
 #pragma once
 #include "CWinApp.h"
 #include "CWnd.h"
-#include "BaseBoard.h"
+#include "Activity.h"
 #include "AbControl.h"
 #include <string>
 using namespace std;
@@ -9,7 +9,7 @@ typedef struct HwndInfo
 {
     HwndInfo():curWnd(NULL),actBd(NULL){};
     CWnd  *curWnd;
-    BaseBoard* actBd;//
+    Activity* actBd;//
 	BOOL     IsNewBoard;
 }HWND_INFO;
 typedef map<HWND,HWND_INFO> WND_BOARD;
@@ -22,7 +22,7 @@ public:
     static AFX_MODULE_STATE* m_s_pInstance;
 	wstring m_sWorkPath;
     CWnd *m_mainWnd;
-    BaseBoard *m_actBoard;
+    Activity *m_actBoard;
     WND_BOARD  m_wbMap;
 private:
 	
@@ -43,8 +43,8 @@ CE_CONTROL_API HINSTANCE AfxGetInstanceHandle( );
 CE_CONTROL_API BOOL  AfxWinInit(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                  LPTSTR lpCmdLine, int nCmdShow);
 
-CE_CONTROL_API void AfxSetBoard(HWND wnd, BaseBoard* bbd);
-CE_CONTROL_API BaseBoard* AfxGetBoard(HWND wnd);
+CE_CONTROL_API void AfxSetBoard(HWND wnd, Activity* bbd);
+CE_CONTROL_API Activity* AfxGetBoard(HWND wnd);
 CE_CONTROL_API void AfxAddHWnd(HWND wnd, CWnd* cwd);//在CWnd的构造函数中
 CE_CONTROL_API BOOL AfxTestNewBoard(HWND wnd);
 CE_CONTROL_API void AfxDelHWnd(HWND wnd);//在CWnd的析构函数中

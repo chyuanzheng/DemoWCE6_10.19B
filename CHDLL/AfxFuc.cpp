@@ -47,7 +47,7 @@ HINSTANCE AfxGetInstanceHandle( )
 	return pModuleState->m_hCurrentInstanceHandle ;
 }
 
-void AfxSetBoard(HWND wnd, BaseBoard* bbd)
+void AfxSetBoard(HWND wnd, Activity* bbd)
 {
     _ASSERT(wnd&&AFX_MODULE_STATE::m_s_pInstance->m_wbMap.size()<4);
 	HWND_INFO &wnd_info =  AFX_MODULE_STATE::m_s_pInstance->m_wbMap[wnd];
@@ -60,7 +60,7 @@ void AfxSetBoard(HWND wnd, BaseBoard* bbd)
 	::InvalidateRect(wnd,NULL,FALSE);//cyz
 
 }
-BaseBoard* AfxGetBoard(HWND wnd)
+Activity* AfxGetBoard(HWND wnd)
 {
     WND_BOARD &wb = AFX_MODULE_STATE::m_s_pInstance->m_wbMap;
     WND_BOARD::iterator pos;

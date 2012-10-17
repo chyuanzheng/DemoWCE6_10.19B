@@ -1,19 +1,19 @@
 #pragma once
 #include "AbControl.h"
 #include "ImagesManager.h"
-class CE_CONTROL_API BaseBoard : public AbControl
+class CE_CONTROL_API Activity : public AbControl
 {
     friend class AFX_MODULE_STATE;
 public:
-    BaseBoard(HWND hwnd, BaseBoard* pParent =NULL);
+    Activity(HWND hwnd, Activity* pParent =NULL);
 	BOOL InitBoard(LPCTSTR imagefile,const RECT *pRc=NULL);
 	//BOOL InitBoard(UINT imageid, RECT *pRc=NULL);
-	BaseBoard *GetParentBoard(){return m_pParentBoard;}
+	Activity *GetParentBoard(){return m_pParentBoard;}
 	const RECT & GetActRect(){return m_ActRect;}
 	BOOL IsDomodal(){return m_bIsDomal;}
 	INT  DoModal();
 
-	virtual ~BaseBoard ();
+	virtual ~Activity ();
     
     virtual void Draw( HDC hdcDst );
 
@@ -28,7 +28,7 @@ protected:
 private:
 	BOOL    m_bIsDomal;
 	CImagesManager *pImageManager;
-    BaseBoard *m_pParentBoard;
+    Activity *m_pParentBoard;
     DWORD    m_ntime;
 };
 

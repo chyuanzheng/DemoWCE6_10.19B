@@ -11,6 +11,6 @@ public:
 protected:
 	virtual void PostNcDestroy();
 private:
-	FontManager *m_pfont;
+	//FontManager *m_pfont;
 	CImagesManager* m_pimage;
 };

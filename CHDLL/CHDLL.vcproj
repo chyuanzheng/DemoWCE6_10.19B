@@ -67,7 +67,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.02"
-				AdditionalDependencies="Ddraw.lib "
+				AdditionalDependencies="Ddraw.lib TinyXml.lib"
 				OutputFile="$(OutDir)/CHDLL.dll"
 				LinkIncremental="2"
 				DelayLoadDLLs="$(NOINHERIT)"
@@ -372,11 +372,11 @@
 				>
 			</File>
 			<File
-				RelativePath=".\AfxFuc.cpp"
+				RelativePath=".\Activity.cpp"
 				>
 			</File>
 			<File
-				RelativePath=".\BaseBoard.cpp"
+				RelativePath=".\AfxFuc.cpp"
 				>
 			</File>
 			<File
@@ -407,6 +407,10 @@
 				RelativePath=".\ImagesManager.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\ListBox.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Í·ÎÄ¼þ"
@@ -418,11 +422,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Common\AfxFuc.h"
+				RelativePath="..\Common\Activity.h"
 				>
 			</File>
 			<File
-				RelativePath="..\Common\BaseBoard.h"
+				RelativePath="..\Common\AfxFuc.h"
 				>
 			</File>
 			<File

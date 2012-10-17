@@ -135,7 +135,7 @@ LRESULT CALLBACK CWnd::WndProc(HWND hWnd, UINT nMsg, WPARAM wParam, LPARAM lPara
 }
 LRESULT CWnd::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 {
-    BaseBoard* db = AfxGetBoard(m_hWnd);
+    Activity* db = AfxGetBoard(m_hWnd);
     if (db ==NULL)
     {
 		return 0;
@@ -165,8 +165,8 @@ void  CWnd::SetShowEffect(BOARD_EFFECT effect)
 void  CWnd::OnPaint()
 {
 
-    BaseBoard* db = AfxGetBoard(m_hWnd);
-	list<BaseBoard*> boards; 
+    Activity* db = AfxGetBoard(m_hWnd);
+	list<Activity*> boards; 
 	boards.push_front(db);
 	while (db->IsDomodal())
 	{
@@ -178,7 +178,7 @@ void  CWnd::OnPaint()
 
 	HDC hdc = ::BeginPaint( m_hWnd, &ps );
 
-	list<BaseBoard*>::iterator pos;
+	list<Activity*>::iterator pos;
 	for (pos = boards.begin();pos != boards.end(); pos++)
 	{
 		(*pos)->Paint(m_hdcDest);

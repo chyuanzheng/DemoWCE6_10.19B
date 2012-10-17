@@ -2,13 +2,13 @@
 #include "../common/Button.h"
 #include "../common/Edit.h"
 
-#include "../common/BaseBoard.h"
+#include "../common/Activity.h"
 
 
-class WifiBoard : public BaseBoard
+class WifiBoard : public Activity
 {
 public:
-    WifiBoard(HWND hwnd, BaseBoard* pParentBoard = NULL);
+    WifiBoard(HWND hwnd, Activity* pParentBoard = NULL);
 	virtual ~WifiBoard ();
     virtual void   Draw( HDC hdcDst ) ;
 	virtual BOOL   Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam );

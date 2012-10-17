@@ -1,5 +1,5 @@
-#include "StdAfx.h"
-#include "ListBox.h"
+#include "../common/StdAfx.h"
+#include "../common/ListBox.h"
 //#include "aygshell.h"
 
 ListBox::ListBox()

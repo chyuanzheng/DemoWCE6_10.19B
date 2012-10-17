@@ -1,5 +1,5 @@
 #include "../common/StdAfx.h"
-#include "../common/BaseBoard.h"
+#include "../common/Activity.h"
 //#include "aygshell.h"
 
 /////////////////////////////////////////////////////////////////////////
@@ -7,7 +7,7 @@
 
 //有两点需要考虑，1，图像字符串的存放，
 //2 InitBoard失败怎么办
-BaseBoard::BaseBoard (HWND hwnd,BaseBoard* pParent)
+Activity::Activity (HWND hwnd,Activity* pParent)
     :AbControl(hwnd)
     ,m_pParentBoard(pParent)
 {
@@ -17,7 +17,7 @@ BaseBoard::BaseBoard (HWND hwnd,BaseBoard* pParent)
 	
 }
 
-BOOL BaseBoard::InitBoard(LPCTSTR imagefile, const RECT *pRc)
+BOOL Activity::InitBoard(LPCTSTR imagefile, const RECT *pRc)
 {
 	wstring Path;
 	AfxGetWorkPath(Path);
@@ -48,7 +48,7 @@ BOOL BaseBoard::InitBoard(LPCTSTR imagefile, const RECT *pRc)
 }
 
 
-BaseBoard::~BaseBoard ()
+Activity::~Activity ()
 {
 	if (m_resID!=0)
 	{
@@ -57,7 +57,7 @@ BaseBoard::~BaseBoard ()
 }
 
 
-void  BaseBoard::DestroyBoard()
+void  Activity::DestroyBoard()
 {
     if(m_pParentBoard)//cyz
     {
@@ -76,10 +76,10 @@ void  BaseBoard::DestroyBoard()
 	//::DestroyWindow(m_hWnd);
     return;//如果是有父窗口则返回FALSE
 }
-void  BaseBoard::DestroyAllBoard()
+void  Activity::DestroyAllBoard()
 {
-    BaseBoard *pBb;
-    BaseBoard *pPraBb = this;
+    Activity *pBb;
+    Activity *pPraBb = this;
     while(pPraBb){
         pBb = pPraBb;
         pPraBb = pBb->m_pParentBoard;
@@ -88,13 +88,13 @@ void  BaseBoard::DestroyAllBoard()
 }
 
 
-void BaseBoard::Draw( HDC hdcDst )
+void Activity::Draw( HDC hdcDst )
 {
 	pImageManager->DrawAlphaImage(m_resID,hdcDst,NULL,&m_ActRect);
     //::BitBlt(hdcDst, 0, 0, m_nWidth, m_nHeight,m_hBackDC,0,0,SRCCOPY);
 }
 
-BOOL BaseBoard::DlClick()
+BOOL Activity::DlClick()
 {
     DWORD ncur;
     DWORD npre;
@@ -106,7 +106,7 @@ BOOL BaseBoard::DlClick()
     return FALSE;
 }
 
-INT BaseBoard::DoModal()
+INT Activity::DoModal()
 {
 	_ASSERT(m_bIsDomal==FALSE);
 	m_bIsDomal = TRUE;
