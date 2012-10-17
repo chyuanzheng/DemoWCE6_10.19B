@@ -1,5 +1,5 @@
-#include "StdAfx.h"
-#include "CWinApp.h"
+#include "../common/StdAfx.h"
+#include "../common/CWinApp.h"
 
 //初始化静态成员
 CWinApp::CWinApp(  )

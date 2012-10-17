@@ -1,5 +1,5 @@
-#include "StdAfx.h"
-#include "Font.h"
+#include "../common/StdAfx.h"
+#include "../common/Font.h"
 
 FontManager *FontManager::m_pInstance = NULL;
 FontManager* FontManager::GetInstance()

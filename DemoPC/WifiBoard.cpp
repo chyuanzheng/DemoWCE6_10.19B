@@ -1,4 +1,4 @@
-#include "stdAfx.h"
+#include "../common/stdAfx.h"
 #include "WifiBoard.h"
 #include "resource.h"
 #include "Event.h"

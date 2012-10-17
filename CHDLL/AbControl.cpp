@@ -1,6 +1,6 @@
-#include "StdAfx.h"
+#include "../common/StdAfx.h"
 
-#include "AbControl.h"
+#include "../common/AbControl.h"
 
 HWND AbControl::m_hCtrlWnd = NULL;
 

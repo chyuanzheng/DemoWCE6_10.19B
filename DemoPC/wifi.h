@@ -1,7 +1,7 @@
 #ifndef _WIFI_H_
 #define _WIFI_H_
 
-#include "stdafx.h"
+#include "../common/stdafx.h"
 #include "wzcsapi.h"
 #include <vector>
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "CWinApp.h"
+#include "../common/CWinApp.h"
 class CCommonApp : public CWinApp
 {
 public:

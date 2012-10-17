@@ -1,5 +1,5 @@
-#include "StdAfx.h"
-#include "CWnd.h"
+#include "../common/StdAfx.h"
+#include "../common/CWnd.h"
 //#include "resource.h"
 #define DDRAW_INIT_STRUCT(ddstruct) { memset(&ddstruct,0,sizeof(ddstruct)); ddstruct.dwSize=sizeof(ddstruct); }
 #define  DEF_WNDCLASS    L"CHNiHao"

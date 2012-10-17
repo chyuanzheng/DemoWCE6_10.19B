@@ -1,5 +1,5 @@
-#include "stdAfx.h"
-#include "BaseBoard.h"
+#include "../common/StdAfx.h"
+#include "../common/BaseBoard.h"
 //#include "aygshell.h"
 
 /////////////////////////////////////////////////////////////////////////

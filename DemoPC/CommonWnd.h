@@ -1,7 +1,7 @@
 #pragma once
-#include "CWnd.h"
-#include "Font.h"
-#include "ImagesManager.h"
+#include "../common/CWnd.h"
+#include "../common/Font.h"
+#include "../common/ImagesManager.h"
 
 class CCommonWnd : public CWnd
 {

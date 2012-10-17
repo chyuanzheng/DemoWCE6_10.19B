@@ -1,5 +1,5 @@
-#include "StdAfx.h"
-#include "Edit.h"
+#include "../common/StdAfx.h"
+#include "../common/Edit.h"
 
 Edit::Edit()
 {

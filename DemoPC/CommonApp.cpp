@@ -1,4 +1,4 @@
-#include "stdAfx.h"
+#include "../common/stdAfx.h"
 #include "CommonApp.h"
 #include "CommonWnd.h"
 

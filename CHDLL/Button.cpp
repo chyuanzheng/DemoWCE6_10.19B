@@ -1,5 +1,5 @@
-#include "StdAfx.h"
-#include "Button.h"
+#include "../common/StdAfx.h"
+#include "../common/Button.h"
 //#include "aygshell.h"
 
 Button::Button()
@@ -106,7 +106,7 @@ BOOL Button::Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam )
 	case WM_LBUTTONDOWN:
 		if( InMyArea( LOWORD( lParam ), HIWORD( lParam ) ) )
 		{	
-			::SetCapture( m_hWnd );
+			//::SetCapture( m_hWnd );
 			m_isButtonDown = TRUE;
 			//AfxValidateRect(m_hWnd,m_ActRect);
 			::InvalidateRect(m_hWnd,&m_ActRect,false);
@@ -122,7 +122,7 @@ BOOL Button::Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam )
 		//若本按钮曾经被按下
 		if( m_isButtonDown == TRUE )
 		{
-			::ReleaseCapture();
+			//::ReleaseCapture();
 			m_isButtonDown = FALSE;
 			AfxValidateRect(m_hWnd,m_ActRect);
 			if( (m_nEventUp!=0) && InMyArea( LOWORD( lParam ), HIWORD( lParam ) ) )

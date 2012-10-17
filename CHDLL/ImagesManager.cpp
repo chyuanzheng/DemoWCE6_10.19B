@@ -1,5 +1,5 @@
-#include "stdafx.h"
-#include "ImagesManager.h"
+#include "../common/StdAfx.h"
+#include "../common/ImagesManager.h"
 
 #include <initguid.h>
 #include <imgguids.h>

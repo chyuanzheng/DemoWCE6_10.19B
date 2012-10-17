@@ -1,7 +1,7 @@
 #pragma once
-#include "Button.h"
-#include "Edit.h"
-#include "BaseBoard.h"
+#include "../common/Button.h"
+#include "../common/Edit.h"
+#include "../common/BaseBoard.h"
 
 
 class OpenBoard : public BaseBoard
