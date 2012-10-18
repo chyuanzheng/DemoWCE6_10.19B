@@ -8,9 +8,11 @@ class AppStorePad : public Activity
 {
 public:
     AppStorePad(HWND hwnd, Activity* pParentBoard = NULL);
+	AppStorePad(){}
 	virtual ~AppStorePad ();
     virtual void   Draw( HDC hdcDst ) ;
 	virtual BOOL   Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam );
+	static AbControl* CreateControl();
 
 
 private:

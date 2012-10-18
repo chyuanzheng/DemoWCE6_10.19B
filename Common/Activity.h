@@ -1,11 +1,14 @@
 #pragma once
 #include "AbControl.h"
 #include "ImagesManager.h"
+class Activity;
+typedef Activity* (*FunCrtActivity)();
 class CE_CONTROL_API Activity : public AbControl
 {
     friend class AFX_MODULE_STATE;
 public:
     Activity(HWND hwnd, Activity* pParent =NULL);
+	Activity(){}
 	BOOL InitBoard(LPCTSTR imagefile,const RECT *pRc=NULL);
 	//BOOL InitBoard(UINT imageid, RECT *pRc=NULL);
 	Activity *GetParentBoard(){return m_pParentBoard;}

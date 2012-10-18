@@ -1,4 +1,6 @@
 #include "../common/stdAfx.h"
+#include "../common/ControlHelp.h"
+
 #include "AppStorePad.h"
 #include "resource.h"
 #include "Event.h"
@@ -304,3 +306,10 @@ void AppStorePad::OnPlayWifi()
 	WifiBoard *pWifi = new WifiBoard(m_hWnd,this);
 	pWifi->DoModal();
 }
+
+AbControl* AppStorePad::CreateControl()
+{
+	return new AppStorePad;
+}
+
+static RegisterHelp help("AppStorePad", AppStorePad::CreateControl);

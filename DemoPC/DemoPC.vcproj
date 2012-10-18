@@ -67,6 +67,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.02"
+				AdditionalDependencies="TinyXml.lib"
 				OutputFile="$(OutDir)/skdtest.exe"
 				LinkIncremental="2"
 				DelayLoadDLLs="$(NOINHERIT)"

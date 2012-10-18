@@ -172,3 +172,13 @@ CE_CONTROL_API BOOL AfxValidateRect( HWND wnd, const RECT & rc )
 	InvalidateRect(wnd,NULL,FALSE);
 	return TRUE;
 }
+
+CE_CONTROL_API void AfxSetActiviy( Activity* act )
+{
+	AFX_MODULE_STATE::m_s_pInstance->pActiviy = act;
+}
+
+CE_CONTROL_API Activity* AfxGetActiviy()
+{
+	return AFX_MODULE_STATE::m_s_pInstance->pActiviy;
+}

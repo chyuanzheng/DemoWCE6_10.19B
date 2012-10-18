@@ -24,6 +24,7 @@ public:
     CWnd *m_mainWnd;
     Activity *m_actBoard;
     WND_BOARD  m_wbMap;
+	Activity*  pActiviy;
 private:
 	
     AFX_MODULE_STATE()
@@ -53,3 +54,6 @@ CE_CONTROL_API BOOL AfxValidateRect(HWND wnd, const RECT & rc);
 
 CE_CONTROL_API BOOL  AfxGetWorkPath(wstring &path);
 CE_CONTROL_API BOOL  AfxShowTaskBar(BOOL Show = TRUE);
+
+CE_CONTROL_API void AfxSetActiviy(Activity* act);
+CE_CONTROL_API Activity* AfxGetActiviy();

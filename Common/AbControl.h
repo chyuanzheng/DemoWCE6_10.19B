@@ -2,6 +2,7 @@
 #include "DllDefine.h"
 class AbControl;
 typedef  list<AbControl*> ControlList;
+typedef AbControl* (*FunCrtControl)();
 class CE_CONTROL_API AbControl 
 {
 public:
