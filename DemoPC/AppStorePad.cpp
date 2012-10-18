@@ -158,7 +158,7 @@ void  AppStorePad::OnGoBack()
 	//	}
 	//	
 	//}
-	::KillTimer(m_hWnd,TIME_ID);
+	//::KillTimer(m_hWnd,TIME_ID);
     DestroyBoard();
 }
 
@@ -240,7 +240,7 @@ void AppStorePad::OnPlayShut(WPARAM wparam,LPARAM lparam)
 {
 	if(UINT(lparam) == 0x300)
 	{
-		new ShowBox(m_hWnd, this);
+		//new ShowBox(m_hWnd, this);
 	}
 }
 
@@ -303,13 +303,61 @@ void AppStorePad::OnStartAWeb( const WCHAR * web )//
 
 void AppStorePad::OnPlayWifi()
 {
-	WifiBoard *pWifi = new WifiBoard(m_hWnd,this);
-	pWifi->DoModal();
+	//WifiBoard *pWifi = new WifiBoard(m_hWnd,this);
+	//pWifi->DoModal();
 }
 
-AbControl* AppStorePad::CreateControl()
+Activity* AppStorePad::CreateControl()
 {
 	return new AppStorePad;
+}
+
+void AppStorePad::onCreate()
+{
+	InitBoard(backimage);
+
+
+	m_b_flash.Init(flashup, flashdown,  BUTTON_FLASH, CHM_PLAY_FLASH );
+	AddCtrl(&m_b_flash);//按键 
+
+	m_b_movie.Init(movieup, moviedown, BUTTON_MOVIE, CHM_PLAY_MOVIE );
+	AddCtrl(&m_b_movie);//按键 
+
+	m_b_readpaper.Init(readup, readdown, BUTTON_READPAPER, CHM_PLAY_PAPER );
+	AddCtrl(&m_b_readpaper);//按键 
+
+	m_b_web.Init(webup, webdown, BUTTON_WEB, CHM_PLAY_WEB );
+	AddCtrl(&m_b_web);//按键 网页
+
+	m_b_speed.Init(speedup, speeddown, BUTTON_SPEED, CHM_PLAY_SPEED );
+	AddCtrl(&m_b_speed);//按键 网速
+
+	m_b_wifi.Init(wifiup, wifidown, BUTTON_WIFI, CHM_PLAY_WIFI );
+	AddCtrl(&m_b_wifi);//按键 关机
+
+	m_b_exit.Init(exitup, exitdown, BUTTON_EXIT, WM_EXIT_GAME );
+	AddCtrl(&m_b_exit);//按键
+
+	m_e_date.SetFont(22,600,L"微软雅黑");
+	m_e_date.SetArea(DATA_E);
+	m_e_date.SetTextColor(RGB(250,250,250));
+	AddCtrl(&m_e_date);//日期
+
+	m_e_time.SetFont(16,600,L"微软雅黑");
+	m_e_time.SetArea(TIME_E);
+	m_e_time.SetTextColor(RGB(250,250,250));
+	AddCtrl(&m_e_time);//时间
+
+	m_e_waitweb.SetFont(24,600,L"微软雅黑");
+	m_e_waitweb.SetArea(WAIT_E);
+	m_e_waitweb.SetTextColor(RGB(250,100,50));
+	AddCtrl(&m_e_waitweb);//时间
+
+
+
+	//::SetTimer(hwnd, TIME_ID,1000, NULL);
+
+	m_hProcess = NULL;
 }
 
 static RegisterHelp help("AppStorePad", AppStorePad::CreateControl);

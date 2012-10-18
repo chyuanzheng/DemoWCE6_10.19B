@@ -55,6 +55,7 @@ BOOL CWnd::Create(LPCTSTR lpszClassName,LPCTSTR lpszWindowName,DWORD dwStyle,con
     m_hWnd =::CreateWindowEx(NULL, lpszClassName, lpszWindowName, dwStyle,
 		rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top,
 		hWndParent, NULL, AfxGetInstanceHandle(),NULL);
+	AbControl::m_hCtrlWnd = m_hWnd;
   
 	if (m_hWnd)
 	{
@@ -135,15 +136,13 @@ LRESULT CALLBACK CWnd::WndProc(HWND hWnd, UINT nMsg, WPARAM wParam, LPARAM lPara
 }
 LRESULT CWnd::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 {
-    Activity* db = AfxGetBoard(m_hWnd);
+    Activity* db = AfxGetActiviy();
     if (db ==NULL)
     {
 		return 0;
     }
-	if (AfxTestNewBoard(m_hWnd) == TRUE)
-	{
-		db->AdjustRect(0,0);
-	}
+
+	//db->AdjustRect(0,0);
 	switch( message )
 	{
          case WM_PAINT:
@@ -165,7 +164,7 @@ void  CWnd::SetShowEffect(BOARD_EFFECT effect)
 void  CWnd::OnPaint()
 {
 
-    Activity* db = AfxGetBoard(m_hWnd);
+    Activity* db = AfxGetActiviy();
 	list<Activity*> boards; 
 	boards.push_front(db);
 	while (db->IsDomodal())

@@ -17,6 +17,15 @@ Activity::Activity (HWND hwnd,Activity* pParent)
 	
 }
 
+Activity::Activity()
+:m_pParentBoard(NULL)
+{
+	m_bIsDomal = FALSE;
+	m_resID = 0;
+	pImageManager= CImagesManager::GetInstance();
+
+}
+
 BOOL Activity::InitBoard(LPCTSTR imagefile, const RECT *pRc)
 {
 	wstring Path;
@@ -31,7 +40,7 @@ BOOL Activity::InitBoard(LPCTSTR imagefile, const RECT *pRc)
 	{
 		return FALSE;
 	}
-	AfxSetBoard(m_hWnd,this);//这里保存必要的BaseBoard指针
+	//AfxSetBoard(m_hWnd,this);//这里保存必要的BaseBoard指针
 
 	if (pRc != NULL)
 	{
@@ -39,8 +48,8 @@ BOOL Activity::InitBoard(LPCTSTR imagefile, const RECT *pRc)
 	}
 	else
 	{
-		GetWindowRect(m_hWnd,&m_ActRect);
-		::SetRect(&m_ActRect,0,0,m_ActRect.right-m_ActRect.left,m_ActRect.bottom-m_ActRect.top);
+		//GetWindowRect(m_hWnd,&m_ActRect);
+		::SetRect(&m_ActRect,0,0,800,480);
 	}
 	m_ntime = 0;
 
@@ -65,12 +74,12 @@ void  Activity::DestroyBoard()
 		{
 			m_bIsDomal = FALSE;
 		}
-        AfxSetBoard(m_hWnd,m_pParentBoard);//cyz
+        //AfxSetBoard(m_hWnd,m_pParentBoard);//cyz
     }
 	else
 	{
-		AfxSetBoard(m_hWnd,NULL);
-		::PostMessage(m_hWnd,WM_EXIT_PROSS,0,0);
+		//AfxSetBoard(m_hWnd,NULL);
+		//::PostMessage(m_hWnd,WM_EXIT_PROSS,0,0);
 	}
 	delete this;
 	//::DestroyWindow(m_hWnd);
@@ -123,4 +132,9 @@ INT Activity::DoModal()
 	}
 
 	return 1;
+}
+
+void Activity::onCreate()
+{
+
 }

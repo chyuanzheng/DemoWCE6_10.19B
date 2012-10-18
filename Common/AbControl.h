@@ -17,9 +17,10 @@ public:
 	BOOL DealCtrlMsg(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);//**
 	void Paint(HDC hdcDst);//**
     BOOL AdjustRect(int xleft, int ytop);
+	static HWND m_hCtrlWnd;
 protected:
 	RECT        m_ActRect;
-    static HWND m_hCtrlWnd;
+    
     HWND  m_hWnd;
 private:
 	AbControl	*m_ParentCtrl;    

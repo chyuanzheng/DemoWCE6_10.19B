@@ -55,6 +55,7 @@ BOOL CCommonApp::InitActivity( LPCWSTR param1 )
 	TiXmlElement * element = root->FirstChildElement();
    
 	string startAction;
+	string startActiviy;
 	while(element)
 	{
 		if (strcmp(element->Value(), "activity") != 0)
@@ -65,6 +66,7 @@ BOOL CCommonApp::InitActivity( LPCWSTR param1 )
 		if (action)
 		{
 			startAction = action->Attribute("name");
+			startActiviy = element->Attribute("name");
 			break;
 		}
 		element = element->NextSiblingElement();
@@ -72,9 +74,10 @@ BOOL CCommonApp::InitActivity( LPCWSTR param1 )
 	}
 	if (startAction == "MAIN")
 	{
-		string startActiviy = element->Attribute("name");
 		Activity * pAct = GXCreateControl::CreateAcitviyByType(startActiviy.c_str());
 		AfxSetActiviy(pAct);
+		pAct->onCreate();
+		return TRUE;
 	}
 	
 	return ret=FALSE;

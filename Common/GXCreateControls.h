@@ -17,6 +17,6 @@ public:
 	static AbControl * CreateControlByType(const CHAR * type);
 	static Activity * CreateAcitviyByType(const CHAR * type);
 	static void RegisterControlCreate(const CHAR * controlname, FunCrtControl funCreate);
-	static void RegisterControlCreate(const CHAR * controlname, FunCrtActivity funCreate);
+	static void RegisterActivityCreate(const CHAR * controlname, FunCrtActivity funCreate);
 };
 

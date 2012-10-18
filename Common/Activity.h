@@ -8,8 +8,9 @@ class CE_CONTROL_API Activity : public AbControl
     friend class AFX_MODULE_STATE;
 public:
     Activity(HWND hwnd, Activity* pParent =NULL);
-	Activity(){}
+	Activity();
 	BOOL InitBoard(LPCTSTR imagefile,const RECT *pRc=NULL);
+	virtual public void onCreate();
 	//BOOL InitBoard(UINT imageid, RECT *pRc=NULL);
 	Activity *GetParentBoard(){return m_pParentBoard;}
 	const RECT & GetActRect(){return m_ActRect;}

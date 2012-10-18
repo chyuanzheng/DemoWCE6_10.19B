@@ -56,7 +56,7 @@ void GXCreateControl::RegisterControlCreate( const CHAR * controlname, FunCrtCon
 	}
 }
 
-void GXCreateControl::RegisterControlCreate( const CHAR * controlname, FunCrtActivity funCreate )
+void GXCreateControl::RegisterActivityCreate( const CHAR * controlname, FunCrtActivity funCreate )
 {
 	map<string, FunCrtActivity>::iterator iter;
 	string sname=controlname;
