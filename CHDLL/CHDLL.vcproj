@@ -388,6 +388,14 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CommonApp.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\CommonWnd.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\ControlHelp.cpp"
 				>
 			</File>
@@ -427,6 +435,10 @@
 				RelativePath=".\StrHelp.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\WinDll.cpp"
+				>
+			</File>
 		</Filter>
 		<Filter
 			Name="Í·ÎÄ¼þ"
@@ -447,6 +459,14 @@
 			</File>
 			<File
 				RelativePath="..\Common\button.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Common\CommonApp.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Common\CommonWnd.h"
 				>
 			</File>
 			<File
@@ -511,6 +531,10 @@
 			</File>
 			<File
 				RelativePath="..\Common\StrHelp.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Common\WinDll.h"
 				>
 			</File>
 		</Filter>

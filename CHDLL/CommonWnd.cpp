@@ -1,6 +1,6 @@
 #include "../common/stdAfx.h"
-#include "CommonWnd.h"
-#include "AppStorePad.h"
+#include "../common/CommonWnd.h"
+
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -11,7 +11,7 @@ const RECT IM_MAIN_RECT = {0,0,800,480};//左边的 退出按键 {0,0,480,272};//左边的
 CCommonWnd::CCommonWnd ()
 {
     Create( NULL, L"gfdgs", WS_POPUP, IM_MAIN_RECT, NULL);
-    new AppStorePad(m_hWnd);
+    //new AppStorePad(m_hWnd);
 	//m_pfont =  FontManager::GetInstance();
 	//m_pfont->AddFontRes(L"\\NandFlash\\TabletSoft\\Resources\\Fonts\\msyh.ttf");
 	m_pimage =  CImagesManager::GetInstance();

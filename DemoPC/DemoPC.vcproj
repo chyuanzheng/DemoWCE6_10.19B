@@ -367,14 +367,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\CommonApp.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\CommonWnd.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\ShowBox.cpp"
 				>
 			</File>
@@ -383,7 +375,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\WinDll.cpp"
+				RelativePath=".\WinMain.cpp"
 				>
 			</File>
 		</Filter>
@@ -394,14 +386,6 @@
 			>
 			<File
 				RelativePath=".\AppStorePad.h"
-				>
-			</File>
-			<File
-				RelativePath=".\CommonApp.h"
-				>
-			</File>
-			<File
-				RelativePath=".\CommonWnd.h"
 				>
 			</File>
 			<File

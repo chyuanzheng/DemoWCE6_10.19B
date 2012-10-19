@@ -1,8 +1,8 @@
 #include "../common/stdAfx.h"
 #include "../common/StrHelp.h"
 #include "../common/GXCreateControls.h"
-#include "CommonApp.h"
-#include "CommonWnd.h"
+#include "../common/CommonApp.h"
+#include "../common/CommonWnd.h"
 
 
 CCommonApp myApp;
@@ -16,6 +16,7 @@ BOOL CCommonApp::InitInstance ()
     m_pMainWnd = new CCommonWnd;
 	if (!InitActivity(L"layout\\WinceManifest.xml"))// concrete code ,adjusts later
 	{
+		ASSERT(0);
 		return FALSE;
 	}
 	
