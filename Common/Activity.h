@@ -9,7 +9,8 @@ class CE_CONTROL_API Activity : public AbControl
 public:
     Activity(HWND hwnd, Activity* pParent =NULL);
 	Activity();
-	BOOL InitBoard(LPCTSTR imagefile,const RECT *pRc=NULL);
+
+	BOOL setContentView(const WCHAR* layout);
 	virtual public void onCreate();
 	//BOOL InitBoard(UINT imageid, RECT *pRc=NULL);
 	Activity *GetParentBoard(){return m_pParentBoard;}
@@ -25,6 +26,7 @@ public:
   
 	UINT    m_resID;
 protected:
+	virtual void setCtrLayout( TiXmlElement * ele );
 	void    DestroyBoard();
     void    DestroyAllBoard();
     BOOL    DlClick();

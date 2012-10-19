@@ -367,14 +367,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\ShowBox.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\WifiBoard.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\WinMain.cpp"
 				>
 			</File>
@@ -386,26 +378,6 @@
 			>
 			<File
 				RelativePath=".\AppStorePad.h"
-				>
-			</File>
-			<File
-				RelativePath=".\event.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Position.h"
-				>
-			</File>
-			<File
-				RelativePath=".\resource.h"
-				>
-			</File>
-			<File
-				RelativePath=".\ShowBox.h"
-				>
-			</File>
-			<File
-				RelativePath=".\WifiBoard.h"
 				>
 			</File>
 		</Filter>

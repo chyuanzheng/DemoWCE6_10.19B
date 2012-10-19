@@ -10,6 +10,7 @@ public:
 	AbControl( );
 	~AbControl( );
 	
+	virtual void setCtrLayout( TiXmlElement * ele);//这里应该为纯虚函数
 	virtual BOOL	AddCtrl(AbControl* control);
 	//所有控件都必须实现的绘画与事件回答函数
 	virtual void Draw( HDC hdcDst ) = 0;
@@ -19,6 +20,7 @@ public:
     BOOL AdjustRect(int xleft, int ytop);
 	static HWND m_hCtrlWnd;
 protected:
+	
 	RECT        m_ActRect;
     
     HWND  m_hWnd;

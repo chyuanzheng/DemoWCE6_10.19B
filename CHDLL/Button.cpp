@@ -1,15 +1,12 @@
 #include "../common/StdAfx.h"
 #include "../common/Button.h"
+#include "../common/StrHelp.h"
 //#include "aygshell.h"
 
 Button::Button()
 {
 	//需要申请内存的变量都需要在默认构造函数中赋空值
 
-	m_nIDUp = 0;
-	m_nIDDown = 0;
-	m_nEventUp = 0;
-	m_nEventDown = 0;
 	pImageManager= CImagesManager::GetInstance();
 }
 
@@ -136,5 +133,32 @@ BOOL Button::Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam )
 	default:
 		return FALSE;
 	}
+}
+
+void Button::setCtrLayout( TiXmlElement * ele )
+{
+
+	int data;
+	ele->Attribute("layout_x",&data);
+	m_ActRect.left = data;
+
+	ele->Attribute("layout_y",&data);
+	m_ActRect.top =  data;
+
+	ele->Attribute("layout_width",&data);
+	m_ActRect.right =  data + m_ActRect.left;
+
+	ele->Attribute("layout_height",&data);
+	m_ActRect.bottom =  data + m_ActRect.top;
+
+	wstring path;
+	AfxGetWorkPath(path);
+
+	string strTail = ele->Attribute("btn_up");
+	m_nIDUp = pImageManager->AddImage((path + StrHelp::StringToWString(strTail)).c_str());
+
+    strTail = ele->Attribute("btn_down");
+	m_nIDDown =  pImageManager->AddImage((path + StrHelp::StringToWString(strTail)).c_str());
+
 }
 

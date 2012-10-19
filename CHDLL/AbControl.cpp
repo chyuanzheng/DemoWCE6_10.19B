@@ -84,3 +84,8 @@ BOOL AbControl::AdjustRect( int xleft, int ytop )
 	}
 	return TRUE;
 }
+
+void AbControl::setCtrLayout( TiXmlElement * ele )
+{
+
+}

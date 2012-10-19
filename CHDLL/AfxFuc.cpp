@@ -1,5 +1,5 @@
 #include "../common/StdAfx.h"
-//#include "MessageWnd.h"
+#include "../common/StrHelp.h"
 #include "../common/AfxFuc.h"
 AFX_MODULE_STATE* AFX_MODULE_STATE::m_s_pInstance= NULL;
 AFX_MODULE_STATE* AfxGetModuleState()

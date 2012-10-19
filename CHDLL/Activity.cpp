@@ -1,5 +1,7 @@
 #include "../common/StdAfx.h"
 #include "../common/Activity.h"
+#include "../common/StrHelp.h"
+#include "../common/Button.h"
 //#include "aygshell.h"
 
 /////////////////////////////////////////////////////////////////////////
@@ -24,36 +26,6 @@ Activity::Activity()
 	m_resID = 0;
 	pImageManager= CImagesManager::GetInstance();
 
-}
-
-BOOL Activity::InitBoard(LPCTSTR imagefile, const RECT *pRc)
-{
-	wstring Path;
-	AfxGetWorkPath(Path);
-
-	wstring imagetPath;
-	imagetPath=  Path + imagefile;
-
-	m_resID = pImageManager->AddImage(imagetPath.c_str());
-
-	if (m_resID==0)
-	{
-		return FALSE;
-	}
-	//AfxSetBoard(m_hWnd,this);//这里保存必要的BaseBoard指针
-
-	if (pRc != NULL)
-	{
-		m_ActRect = *pRc;
-	}
-	else
-	{
-		//GetWindowRect(m_hWnd,&m_ActRect);
-		::SetRect(&m_ActRect,0,0,800,480);
-	}
-	m_ntime = 0;
-
-	return true;
 }
 
 
@@ -134,7 +106,87 @@ INT Activity::DoModal()
 	return 1;
 }
 
+
 void Activity::onCreate()
 {
 
+}
+
+BOOL Activity::setContentView( const WCHAR* layout )
+{
+	BOOL ret = FALSE;
+	wstring path;
+	AfxGetWorkPath(path);
+	path += layout;
+
+	TiXmlDocument	xmlDoc;
+	ret = xmlDoc.LoadFile(StrHelp::WStringToString(path).c_str());
+	if (!ret)
+	{
+		OutputDebugString(L"setContentView LoadFile error! \r\n");
+		return FALSE;
+	}
+	
+	TiXmlElement *root = xmlDoc.RootElement();
+	setCtrLayout(root);
+
+	return TRUE;
+}
+
+void Activity::setCtrLayout( TiXmlElement * ele )
+{
+	if (strcmp(ele->Value(), "AbsoluteLayout") != 0)
+	{
+		return ;
+	}
+
+	int data;
+	ele->Attribute("layout_x",&data);
+	m_ActRect.left = data;
+
+	ele->Attribute("layout_y",&data);
+	m_ActRect.top =  data;
+
+	ele->Attribute("layout_width",&data);
+	m_ActRect.right =  data + m_ActRect.left;
+
+	ele->Attribute("layout_height",&data);
+	m_ActRect.bottom =  data + m_ActRect.top;
+
+	string strTail = ele->Attribute("background");
+
+	wstring path;
+	AfxGetWorkPath(path);
+	path =  path + StrHelp::StringToWString(strTail);
+
+	m_resID = pImageManager->AddImage(path.c_str());
+
+	if (m_resID==0)
+	{
+		ASSERT(0);
+		return;
+	}
+
+
+	TiXmlElement * chid = ele->FirstChildElement();
+	string ctrname;
+	AbControl *ctr;
+	while(chid)
+	{
+
+	    ctrname = chid->Value();
+
+		if (ctrname == "Button")
+		{
+			ctr = new Button;
+		}
+
+		if (ctr)
+		{
+			AddCtrl(ctr);
+			ctr->setCtrLayout(chid);
+		}
+		chid = chid->NextSiblingElement();
+
+	}
 }
