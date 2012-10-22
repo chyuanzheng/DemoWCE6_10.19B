@@ -6,7 +6,7 @@ typedef AbControl* (*FunCrtControl)();
 class CE_CONTROL_API AbControl 
 {
 public:
-	AbControl(HWND hwnd);
+
 	AbControl( );
 	~AbControl( );
 	
@@ -14,10 +14,11 @@ public:
 	virtual BOOL	AddCtrl(AbControl* control);
 	//所有控件都必须实现的绘画与事件回答函数
 	virtual void Draw( HDC hdcDst ) = 0;
-    virtual BOOL Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam ){return FALSE;}
+	virtual BOOL Response(  UINT nMsg, WPARAM wParam, LPARAM lParam ){return FALSE;}
 	BOOL DealCtrlMsg(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam);//**
 	void Paint(HDC hdcDst);//**
     BOOL AdjustRect(int xleft, int ytop);
+	void setCtrRect(TiXmlElement * ele);
 	static HWND m_hCtrlWnd;
 protected:
 	

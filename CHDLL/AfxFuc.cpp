@@ -47,63 +47,8 @@ HINSTANCE AfxGetInstanceHandle( )
 	return pModuleState->m_hCurrentInstanceHandle ;
 }
 
-void AfxSetBoard(HWND wnd, Activity* bbd)
-{
-    _ASSERT(wnd&&AFX_MODULE_STATE::m_s_pInstance->m_wbMap.size()<4);
-	HWND_INFO &wnd_info =  AFX_MODULE_STATE::m_s_pInstance->m_wbMap[wnd];
-	if (wnd_info.actBd != bbd)
-	{
-		wnd_info.actBd = bbd;
-		wnd_info.IsNewBoard = TRUE;
-	}
-    //::PostMessage(wnd,WM_PAINT,0,0);
-	::InvalidateRect(wnd,NULL,FALSE);//cyz
 
-}
-Activity* AfxGetBoard(HWND wnd)
-{
-    WND_BOARD &wb = AFX_MODULE_STATE::m_s_pInstance->m_wbMap;
-    WND_BOARD::iterator pos;
-    pos = wb.find(wnd);
-    if(pos  != wb.end() )
-    {
-        return wb[wnd].actBd;
-    }
-    else
-        return NULL;
-}
 
-void AfxAddHWnd(HWND wnd, CWnd* cwd)
-{
-
-    WND_BOARD &wb = AFX_MODULE_STATE::m_s_pInstance->m_wbMap;
-    HWND_INFO hi;
-    hi.curWnd = cwd;
-    wb[wnd]=hi;
-}
-void AfxDelHWnd(HWND wnd)
-{
-    WND_BOARD &wb = AFX_MODULE_STATE::m_s_pInstance->m_wbMap;
-    WND_BOARD::iterator pos;
-    pos = wb.find(wnd);
-    if(pos  != wb.end() )
-    {
-        wb.erase(pos);
-    }
-    //_ASSERT(0);
-}
-CWnd* AfxGetCWnd(HWND wnd)
-{
-    WND_BOARD &wb = AFX_MODULE_STATE::m_s_pInstance->m_wbMap;
-    WND_BOARD::iterator pos;
-    pos = wb.find(wnd);
-    if(pos  != wb.end() )
-    {
-        return wb[wnd].curWnd;
-    }
-    else
-        return NULL;
-}
 CE_CONTROL_API BOOL  AfxGetWorkPath(wstring &path)
 {
 	AFX_MODULE_STATE* pModuleState = AfxGetModuleState();
@@ -149,27 +94,12 @@ CE_CONTROL_API BOOL AfxShowTaskBar( BOOL Show /*= TRUE*/ )
 	return TRUE;
 }
 
-CE_CONTROL_API BOOL AfxTestNewBoard( HWND wnd )
-{
-	WND_BOARD &wb = AFX_MODULE_STATE::m_s_pInstance->m_wbMap;
-	WND_BOARD::iterator pos;
-	pos = wb.find(wnd);
-	if(pos  != wb.end() )
-	{
-		BOOL isnew = wb[wnd].IsNewBoard;
-		wb[wnd].IsNewBoard = FALSE;
-		return isnew;
-	}
-	else
-		return FALSE;
-}
 
-CE_CONTROL_API BOOL AfxValidateRect( HWND wnd, const RECT & rc )
+
+CE_CONTROL_API BOOL AfxValidateRect( LPCRECT rc )
 {
-	CWnd *pWnd = AfxGetCWnd(wnd);
-	_ASSERT(pWnd != NULL);
-	pWnd->AddClipRect(rc);
-	InvalidateRect(wnd,NULL,FALSE);
+
+	InvalidateRect(AFX_MODULE_STATE::m_s_pInstance->m_wnd,rc,FALSE);
 	return TRUE;
 }
 
@@ -181,4 +111,14 @@ CE_CONTROL_API void AfxSetActiviy( Activity* act )
 CE_CONTROL_API Activity* AfxGetActiviy()
 {
 	return AFX_MODULE_STATE::m_s_pInstance->pActiviy;
+}
+
+CE_CONTROL_API void AfxSetHWND( HWND hwnd )
+{
+	AFX_MODULE_STATE::m_s_pInstance->m_wnd = hwnd;
+}
+
+CE_CONTROL_API HWND AfxGetHWND()
+{
+	return AFX_MODULE_STATE::m_s_pInstance->m_wnd ;
 }

@@ -408,10 +408,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Edit.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\Font.cpp"
 				>
 			</File>
@@ -425,10 +421,6 @@
 			</File>
 			<File
 				RelativePath=".\ImagesManager.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ListBox.cpp"
 				>
 			</File>
 			<File
@@ -486,10 +478,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Common\Edit.h"
-				>
-			</File>
-			<File
 				RelativePath="..\Common\Font.h"
 				>
 			</File>
@@ -499,26 +487,6 @@
 			</File>
 			<File
 				RelativePath="..\Common\ImagesManager.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Common\ListBox.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Common\Percent.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Common\Picture.h"
-				>
-			</File>
-			<File
-				RelativePath=".\resource.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Common\Slider.h"
 				>
 			</File>
 			<File
@@ -535,6 +503,10 @@
 			</File>
 			<File
 				RelativePath="..\Common\WinDll.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Common\XmlDef.h"
 				>
 			</File>
 		</Filter>

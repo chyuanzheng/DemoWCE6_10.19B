@@ -66,10 +66,10 @@ BOOL CImagesManager::GetImageFromFile( const TCHAR* file,PARGBImageInfo* imagein
 				//else if(imgInfo.PixelFormat == Format24bppRgb)
 				//	formatid = PixelFormat24bppRGB;
 
-				if (SUCCEEDED(m_pImgFactory->CreateBitmapFromImage(pImage, 0, 0, formatid/*PIXFMT_32BPP_PARGB*/, 
+				if (SUCCEEDED(m_pImgFactory->CreateBitmapFromImage(pImage, 0, 0, formatid, 
 					InterpolationHintDefault, &pBitmapImage)))
 				{
-					pBitmapImage->LockBits(&rc, ImageLockModeRead, formatid/*PIXFMT_32BPP_PARGB*/, &bmpData);
+					pBitmapImage->LockBits(&rc, ImageLockModeRead, formatid, &bmpData);
 					imageinfo->hBitMap = CreateBitmap(imgInfo.Width, imgInfo.Height, 1, 
 						GetPixelFormatSize(imgInfo.PixelFormat), bmpData.Scan0);
 					if(imageinfo->hBitMap == NULL)
@@ -97,6 +97,7 @@ BOOL CImagesManager::GetImageFromFile( const TCHAR* file,PARGBImageInfo* imagein
 
 				SelectObject(memHdc, hOldBitmap);
 				DeleteDC(memHdc);
+				ReleaseDC(NULL,hdc);
 			}
 		}
 

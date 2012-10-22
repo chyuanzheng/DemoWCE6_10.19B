@@ -1,16 +1,11 @@
 #include "../common/StdAfx.h"
-
+#include "../common/XmlDef.h"
 #include "../common/AbControl.h"
 
 HWND AbControl::m_hCtrlWnd = NULL;
 
 
-AbControl::AbControl(HWND hwnd)
-{
-	m_ParentCtrl = NULL;
-    AbControl::m_hCtrlWnd = m_hWnd = hwnd; 
-	m_pCtrlVet = new ControlList;
-}
+
 AbControl::AbControl()
 {
     _ASSERT(AbControl::m_hCtrlWnd);
@@ -32,13 +27,11 @@ BOOL   AbControl::AddCtrl(AbControl* control)
 	return false;
 }
 
+
 BOOL AbControl::DealCtrlMsg( HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam )
 {
-	HDC hdc = ::GetDC(hwnd);//这里不要用m_hWnd，因为可能会被delete
-	::SetBkMode( hdc, TRANSPARENT );
-	BOOL ret =Response(  hdc,  message, wParam, lParam ); 
-	::ReleaseDC(hwnd, hdc);//这里 error?
-	if (ret == TRUE)
+
+	if (Response(message, wParam, lParam ) == TRUE)
 	{
 		return TRUE;
 	}
@@ -88,4 +81,20 @@ BOOL AbControl::AdjustRect( int xleft, int ytop )
 void AbControl::setCtrLayout( TiXmlElement * ele )
 {
 
+}
+
+void AbControl::setCtrRect( TiXmlElement * ele )
+{
+	int data;
+	ele->Attribute(LAYOUT_X,&data);
+	m_ActRect.left = data;
+
+	ele->Attribute(LAYOUT_Y,&data);
+	m_ActRect.top =  data;
+
+	ele->Attribute(LAYOUT_WIDTH,&data);
+	m_ActRect.right =  data + m_ActRect.left;
+
+	ele->Attribute(LAYOUT_HEIGHT,&data);
+	m_ActRect.bottom =  data + m_ActRect.top;
 }

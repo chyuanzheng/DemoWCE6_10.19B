@@ -2,6 +2,7 @@
 #include "../common/Activity.h"
 #include "../common/StrHelp.h"
 #include "../common/Button.h"
+#include "../common/XmlDef.h"
 //#include "aygshell.h"
 
 /////////////////////////////////////////////////////////////////////////
@@ -9,20 +10,10 @@
 
 //有两点需要考虑，1，图像字符串的存放，
 //2 InitBoard失败怎么办
-Activity::Activity (HWND hwnd,Activity* pParent)
-    :AbControl(hwnd)
-    ,m_pParentBoard(pParent)
-{
-	m_bIsDomal = FALSE;
-	m_resID = 0;
-	pImageManager= CImagesManager::GetInstance();
-	
-}
 
 Activity::Activity()
 :m_pParentBoard(NULL)
 {
-	m_bIsDomal = FALSE;
 	m_resID = 0;
 	pImageManager= CImagesManager::GetInstance();
 
@@ -42,15 +33,10 @@ void  Activity::DestroyBoard()
 {
     if(m_pParentBoard)//cyz
     {
-		if (m_bIsDomal)
-		{
-			m_bIsDomal = FALSE;
-		}
-        //AfxSetBoard(m_hWnd,m_pParentBoard);//cyz
+
     }
 	else
 	{
-		//AfxSetBoard(m_hWnd,NULL);
 		//::PostMessage(m_hWnd,WM_EXIT_PROSS,0,0);
 	}
 	delete this;
@@ -72,7 +58,6 @@ void  Activity::DestroyAllBoard()
 void Activity::Draw( HDC hdcDst )
 {
 	pImageManager->DrawAlphaImage(m_resID,hdcDst,NULL,&m_ActRect);
-    //::BitBlt(hdcDst, 0, 0, m_nWidth, m_nHeight,m_hBackDC,0,0,SRCCOPY);
 }
 
 BOOL Activity::DlClick()
@@ -85,25 +70,6 @@ BOOL Activity::DlClick()
     if( ( ncur- npre)>0 &&( ncur- npre) <300 )
         return TRUE;
     return FALSE;
-}
-
-INT Activity::DoModal()
-{
-	_ASSERT(m_bIsDomal==FALSE);
-	m_bIsDomal = TRUE;
-
-	MSG    msg;
-	while(GetMessage(&msg, NULL, 0, 0 ))
-	{
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
-		if (m_bIsDomal== FALSE)
-		{
-			break;
-		}
-	}
-
-	return 1;
 }
 
 
@@ -135,25 +101,14 @@ BOOL Activity::setContentView( const WCHAR* layout )
 
 void Activity::setCtrLayout( TiXmlElement * ele )
 {
-	if (strcmp(ele->Value(), "AbsoluteLayout") != 0)
+	if (strcmp(ele->Value(), ABSOLUTE) != 0)
 	{
 		return ;
 	}
 
-	int data;
-	ele->Attribute("layout_x",&data);
-	m_ActRect.left = data;
+	setCtrRect(ele);
 
-	ele->Attribute("layout_y",&data);
-	m_ActRect.top =  data;
-
-	ele->Attribute("layout_width",&data);
-	m_ActRect.right =  data + m_ActRect.left;
-
-	ele->Attribute("layout_height",&data);
-	m_ActRect.bottom =  data + m_ActRect.top;
-
-	string strTail = ele->Attribute("background");
+	string strTail = ele->Attribute(BACKGROUD);
 
 	wstring path;
 	AfxGetWorkPath(path);
@@ -176,7 +131,7 @@ void Activity::setCtrLayout( TiXmlElement * ele )
 
 	    ctrname = chid->Value();
 
-		if (ctrname == "Button")
+		if (ctrname == BUTTON)
 		{
 			ctr = new Button;
 		}

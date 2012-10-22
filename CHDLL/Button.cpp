@@ -1,6 +1,7 @@
 #include "../common/StdAfx.h"
 #include "../common/Button.h"
 #include "../common/StrHelp.h"
+#include "../common/XmlDef.h"
 //#include "aygshell.h"
 
 Button::Button()
@@ -94,7 +95,7 @@ BOOL Button::InMyArea( int x, int y )
 	return ::PtInRect(&m_ActRect, pt);
 }
 
-BOOL Button::Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam )
+BOOL Button::Response( UINT nMsg, WPARAM wParam, LPARAM lParam )
 {
 	//HBITMAP hOldMap;
 
@@ -105,8 +106,8 @@ BOOL Button::Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam )
 		{	
 			//::SetCapture( m_hWnd );
 			m_isButtonDown = TRUE;
-			//AfxValidateRect(m_hWnd,m_ActRect);
-			::InvalidateRect(m_hWnd,&m_ActRect,false);
+			AfxValidateRect(&m_ActRect);
+			
 			if(m_nEventDown != 0)
 			{
 				::PostMessage( m_hWnd, m_nEventDown, (WPARAM)this, 0 );
@@ -121,7 +122,7 @@ BOOL Button::Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam )
 		{
 			//::ReleaseCapture();
 			m_isButtonDown = FALSE;
-			AfxValidateRect(m_hWnd,m_ActRect);
+			AfxValidateRect(&m_ActRect);
 			if( (m_nEventUp!=0) && InMyArea( LOWORD( lParam ), HIWORD( lParam ) ) )
 			{
 				::PostMessage( m_hWnd, m_nEventUp, (WPARAM)this, 0 );
@@ -138,26 +139,15 @@ BOOL Button::Response( HDC hdc, UINT nMsg, WPARAM wParam, LPARAM lParam )
 void Button::setCtrLayout( TiXmlElement * ele )
 {
 
-	int data;
-	ele->Attribute("layout_x",&data);
-	m_ActRect.left = data;
-
-	ele->Attribute("layout_y",&data);
-	m_ActRect.top =  data;
-
-	ele->Attribute("layout_width",&data);
-	m_ActRect.right =  data + m_ActRect.left;
-
-	ele->Attribute("layout_height",&data);
-	m_ActRect.bottom =  data + m_ActRect.top;
+	setCtrRect(ele);
 
 	wstring path;
 	AfxGetWorkPath(path);
 
-	string strTail = ele->Attribute("btn_up");
+	string strTail = ele->Attribute(BTN_UP);
 	m_nIDUp = pImageManager->AddImage((path + StrHelp::StringToWString(strTail)).c_str());
 
-    strTail = ele->Attribute("btn_down");
+    strTail = ele->Attribute(BTN_DOWN);
 	m_nIDDown =  pImageManager->AddImage((path + StrHelp::StringToWString(strTail)).c_str());
 
 }

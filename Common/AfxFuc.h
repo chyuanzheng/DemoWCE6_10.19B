@@ -5,14 +5,7 @@
 #include "AbControl.h"
 #include <string>
 using namespace std;
-typedef struct HwndInfo
-{
-    HwndInfo():curWnd(NULL),actBd(NULL){};
-    CWnd  *curWnd;
-    Activity* actBd;//
-	BOOL     IsNewBoard;
-}HWND_INFO;
-typedef map<HWND,HWND_INFO> WND_BOARD;
+
 class AFX_MODULE_STATE 
 {
 public:
@@ -21,9 +14,8 @@ public:
     HINSTANCE m_hCurrentInstanceHandle;
     static AFX_MODULE_STATE* m_s_pInstance;
 	wstring m_sWorkPath;
-    CWnd *m_mainWnd;
     Activity *m_actBoard;
-    WND_BOARD  m_wbMap;
+	HWND       m_wnd;
 	Activity*  pActiviy;
 private:
 	
@@ -44,16 +36,15 @@ CE_CONTROL_API HINSTANCE AfxGetInstanceHandle( );
 CE_CONTROL_API BOOL  AfxWinInit(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                  LPTSTR lpCmdLine, int nCmdShow);
 
-CE_CONTROL_API void AfxSetBoard(HWND wnd, Activity* bbd);
-CE_CONTROL_API Activity* AfxGetBoard(HWND wnd);
-CE_CONTROL_API void AfxAddHWnd(HWND wnd, CWnd* cwd);//在CWnd的构造函数中
-CE_CONTROL_API BOOL AfxTestNewBoard(HWND wnd);
-CE_CONTROL_API void AfxDelHWnd(HWND wnd);//在CWnd的析构函数中
-CE_CONTROL_API CWnd* AfxGetCWnd(HWND wnd);
-CE_CONTROL_API BOOL AfxValidateRect(HWND wnd, const RECT & rc);
+
+CE_CONTROL_API BOOL AfxValidateRect(LPCRECT  rc);
 
 CE_CONTROL_API BOOL  AfxGetWorkPath(wstring &path);
 CE_CONTROL_API BOOL  AfxShowTaskBar(BOOL Show = TRUE);
 
 CE_CONTROL_API void AfxSetActiviy(Activity* act);
 CE_CONTROL_API Activity* AfxGetActiviy();
+
+
+CE_CONTROL_API void  AfxSetHWND(HWND  hwnd);
+CE_CONTROL_API HWND  AfxGetHWND();

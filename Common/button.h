@@ -19,7 +19,7 @@ protected:
 	//绘画
 	virtual void Draw( HDC hdcDst );
 	//响应自身事件
-	virtual BOOL Response( HDC hdc,	UINT nMsg, WPARAM wParam, LPARAM lParam );
+	virtual BOOL Response( 	UINT nMsg, WPARAM wParam, LPARAM lParam );
 	virtual void setCtrLayout( TiXmlElement * ele);
 	BOOL InMyArea( int x, int y );
     

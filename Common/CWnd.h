@@ -31,15 +31,13 @@ public:
     
     virtual LRESULT WindowProc(UINT message, WPARAM wParam, LPARAM lParam);
     void  SetShowEffect(BOARD_EFFECT effect);
-	void  AddClipRect(const RECT &rc); 
+
 public:
     HWND	 m_hWnd;
     RECT     m_rect;
     CWnd     * m_pParent;
     INT      m_nExitCode;      
 private:
-	typedef vector<RECT> V_RECT;
-	V_RECT          *m_pClipRect;
     static CWnd *m_pWindow;
 
     void  OnPaint();
