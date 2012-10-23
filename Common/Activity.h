@@ -1,6 +1,6 @@
 #pragma once
 #include "AbControl.h"
-#include "ImagesManager.h"
+
 class Activity;
 typedef Activity* (*FunCrtActivity)();
 class CE_CONTROL_API Activity : public AbControl
@@ -20,7 +20,7 @@ public:
     virtual void Draw( HDC hdcDst );
 
   
-	UINT    m_resID;
+	HANDLE    m_handleBack;
 protected:
 	virtual void setCtrLayout( TiXmlElement * ele );
 	void    DestroyBoard();
@@ -28,7 +28,6 @@ protected:
     BOOL    DlClick();
     
 private:
-	CImagesManager *pImageManager;
     Activity *m_pParentBoard;
     DWORD    m_ntime;
 };

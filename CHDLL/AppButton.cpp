@@ -1,16 +1,16 @@
 #include "../common/StdAfx.h"
-#include "../common/Button.h"
+#include "../common/AppButton.h"
 #include "../common/StrHelp.h"
 #include "../common/XmlDef.h"
 //#include "aygshell.h"
 
-Button::Button()
+AppButton::AppButton()
 {
 	//需要申请内存的变量都需要在默认构造函数中赋空值
 
 }
 
-Button::~Button()
+AppButton::~AppButton()
 {
 
 	if (m_handleUp!=NULL)
@@ -25,7 +25,7 @@ Button::~Button()
 
 
 
-void Button::Draw( HDC hdcDst )
+void AppButton::Draw( HDC hdcDst )
 {
 
 
@@ -47,14 +47,14 @@ void Button::Draw( HDC hdcDst )
 
 }
 
-BOOL Button::InMyArea( int x, int y )
+BOOL AppButton::InMyArea( int x, int y )
 {
 	//判断区域
 	POINT pt = {x,y};
 	return ::PtInRect(&m_ActRect, pt);
 }
 
-BOOL Button::Response( UINT nMsg, WPARAM wParam, LPARAM lParam )
+BOOL AppButton::Response( UINT nMsg, WPARAM wParam, LPARAM lParam )
 {
 	//HBITMAP hOldMap;
 
@@ -95,7 +95,7 @@ BOOL Button::Response( UINT nMsg, WPARAM wParam, LPARAM lParam )
 	}
 }
 
-void Button::setCtrLayout( TiXmlElement * ele )
+void AppButton::setCtrLayout( TiXmlElement * ele )
 {
 
 	setCtrRect(ele);

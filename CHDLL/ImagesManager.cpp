@@ -24,16 +24,13 @@ CImagesManager::CImagesManager()
 		CLSCTX_INPROC_SERVER,
 		IID_IImagingFactory,
 		(void **)&m_pImgFactory);
-	m_pMapinfo = new MAP_IMAGE_INFO;
-
 }
 
 CImagesManager::~CImagesManager()
 {
-	_ASSERT(m_pMapinfo->size() == 0);
+
 	m_pImgFactory->Release();
 	CoUninitialize();
-	delete m_pMapinfo;
 
 }
 
@@ -111,63 +108,56 @@ BOOL CImagesManager::GetImageFromFile( const TCHAR* file,PARGBImageInfo* imagein
 	return Result;
 }
 
-UINT CImagesManager::AddImage( const TCHAR* file )
+HANDLE CImagesManager::AddImage( const TCHAR* file )
 {
-	UINT ResID = GetAFreeID();
 
 	PARGBImageInfo* imageinfo = (PARGBImageInfo*)::LocalAlloc(LPTR,sizeof(PARGBImageInfo));
-	if(GetImageFromFile(file,imageinfo))
+	if(imageinfo && GetImageFromFile(file,imageinfo))
 	{
-		m_pMapinfo->insert(pair<UINT,PARGBImageInfo*>(ResID,imageinfo));
-		return ResID;
+		return (HANDLE)imageinfo;
 	}
 
-	LocalFree(imageinfo);//cyz 10/10/8 # 14 :08
-	return 0;
+	if (imageinfo)
+	{
+		LocalFree(imageinfo);//cyz 10/10/8 # 14 :08
+	}
+	return NULL;//fail
 
 
 
 }
 
-BOOL CImagesManager::RemoveImage( UINT ResID )
+BOOL CImagesManager::RemoveImage( HANDLE ResID )
 {
-	MAP_IMAGE_INFO::iterator iter=m_pMapinfo->find(ResID);
-	if(iter!=m_pMapinfo->end())
+
+	PARGBImageInfo* info = (PARGBImageInfo*)ResID;
+
+	if(info && info->hBitMap)
 	{
-		PARGBImageInfo* info = (PARGBImageInfo*)iter->second;
+		DeleteObject(info->hBitMap);
+	}
+	LocalFree(info);
 
-		if(info && info->hBitMap)
+	return TRUE;
+		
+}
+
+BOOL CImagesManager::DrawAlphaImage( HANDLE ResID,HDC destDC,RECT* srcRC,RECT* destRC,BYTE Alpha/*=255*/ )
+{
+	PARGBImageInfo* info = (PARGBImageInfo*)ResID;
+	if(info)
+	{
+		RECT SourceRECT;
+		if(srcRC == NULL)
 		{
-			DeleteObject(info->hBitMap);
+			SourceRECT.left = 0; SourceRECT.top = 0;
+			SourceRECT.right = info->Width; SourceRECT.bottom = info->Height;
 		}
-		LocalFree(info);
+		else SourceRECT = *srcRC;
 
-		m_pMapinfo->erase(iter);
+		DrawAlphaImage(info->hBitMap,info->pixelformat,destDC,&SourceRECT,destRC,Alpha);
+
 		return TRUE;
-	}
-	else return FALSE;
-}
-
-BOOL CImagesManager::DrawAlphaImage( UINT ResID,HDC destDC,RECT* srcRC,RECT* destRC,BYTE Alpha/*=255*/ )
-{
-	MAP_IMAGE_INFO::iterator iter=m_pMapinfo->find(ResID);
-	if(iter!=m_pMapinfo->end())
-	{
-		PARGBImageInfo* info = (PARGBImageInfo*)iter->second;
-		if(info)
-		{
-			RECT SourceRECT;
-			if(srcRC == NULL)
-			{
-				SourceRECT.left = 0; SourceRECT.top = 0;
-				SourceRECT.right = info->Width; SourceRECT.bottom = info->Height;
-			}
-			else SourceRECT = *srcRC;
-
-			DrawAlphaImage(info->hBitMap,info->pixelformat,destDC,&SourceRECT,destRC,Alpha);
-
-			return TRUE;
-		}
 	}
 
 	return FALSE;
@@ -207,24 +197,3 @@ BOOL CImagesManager::DrawAlphaImage( HBITMAP bmp,DWORD imgPixelformat,HDC destDC
 	return TRUE;
 }
 
-UINT CImagesManager::GetAFreeID()
-{
-	int retid = 1;
-
-	MAP_IMAGE_INFO::iterator iter;
-
-	for (iter = m_pMapinfo->begin();iter != m_pMapinfo->end();iter++)
-	{
-		if (retid == iter->first)
-		{
-			retid++;
-		}
-		else if (retid < iter->first)
-		{
-			break;
-		}
-
-	}
-	_ASSERT(m_pMapinfo->find(retid) == m_pMapinfo->end());
-	return retid;
-}

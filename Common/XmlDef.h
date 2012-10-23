@@ -13,3 +13,7 @@
 #define  BTN_UP              "btn_up"
 #define  BTN_DOWN         "btn_down"
 
+#define  LAUNCH            "Launch"  
+
+#define  APP_BUTTON         "AppButton" 
+

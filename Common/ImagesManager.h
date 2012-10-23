@@ -14,7 +14,7 @@ typedef struct _tagPARGBImageInfo
 	HBITMAP hBitMap;        // the Handle of the PARGB image 
 }PARGBImageInfo;
 
-typedef map<UINT,PARGBImageInfo*>  MAP_IMAGE_INFO;
+
 
 class CE_CONTROL_API CImagesManager
 {
@@ -23,14 +23,12 @@ public:
 	virtual ~CImagesManager();  
 
 	BOOL GetImageFromFile( const TCHAR* file,PARGBImageInfo* imageinfo );
-	UINT AddImage(const TCHAR* file);
-	BOOL RemoveImage(UINT ResID);
-	BOOL DrawAlphaImage(UINT ResID,HDC destDC,RECT* srcRC,RECT* destRC,BYTE Alpha=255);
+	HANDLE AddImage(const TCHAR* file);
+	BOOL RemoveImage(HANDLE ResID);
+	BOOL DrawAlphaImage(HANDLE ResID,HDC destDC,RECT* srcRC,RECT* destRC,BYTE Alpha=255);
 	BOOL DrawAlphaImage(HBITMAP bmp,DWORD imgPixelformat,HDC destDC,RECT* srcRC,RECT* destRC,BYTE Alpha=255);
 private:
 	CImagesManager();
-	UINT GetAFreeID();
-	MAP_IMAGE_INFO *m_pMapinfo;
 	static CImagesManager *m_pInstance;
 	IImagingFactory *m_pImgFactory;
 };

@@ -1,5 +1,6 @@
 #pragma once
 #pragma warning(disable:4996) //仅显示一个
+#pragma warning(disable:4251) //
 #define CH_CE_DEBUG
 #ifdef CH_CE_DEBUG
 //#ifndef _SECURE_ATL

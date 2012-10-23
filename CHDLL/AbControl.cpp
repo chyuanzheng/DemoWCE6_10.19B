@@ -2,14 +2,13 @@
 #include "../common/XmlDef.h"
 #include "../common/AbControl.h"
 
-HWND AbControl::m_hCtrlWnd = NULL;
 
 
 
 AbControl::AbControl()
 {
-    _ASSERT(AbControl::m_hCtrlWnd);
-    m_hWnd = AbControl::m_hCtrlWnd; 
+
+	pImageManager= CImagesManager::GetInstance();
 	m_pCtrlVet = new ControlList;
 }
 AbControl::~AbControl()
@@ -27,8 +26,12 @@ BOOL   AbControl::AddCtrl(AbControl* control)
 	return false;
 }
 
-
-BOOL AbControl::DealCtrlMsg( HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam )
+/** 控件的消息处理入口函数 
+    （WM_DESTROY WM_EXIT_PROSS WM_PAINT 不在此处理）
+    先处理本控件的消息 （Response）
+    然后再处理本控件中的子控件的消息
+*/
+BOOL AbControl::DealCtrlMsg( UINT message, WPARAM wParam, LPARAM lParam )
 {
 
 	if (Response(message, wParam, lParam ) == TRUE)
@@ -39,7 +42,7 @@ BOOL AbControl::DealCtrlMsg( HWND hwnd, UINT message, WPARAM wParam, LPARAM lPar
 	pos = m_pCtrlVet->begin();
 	while(pos != m_pCtrlVet->end())
 	{
-		if ((*pos)->DealCtrlMsg(  hwnd,  message, wParam, lParam ))
+		if ((*pos)->DealCtrlMsg(message, wParam, lParam ))
 		{
 			return TRUE;
 		}
@@ -48,6 +51,8 @@ BOOL AbControl::DealCtrlMsg( HWND hwnd, UINT message, WPARAM wParam, LPARAM lPar
 	return FALSE;
 }
 
+/** 控件的WM_PAINT消息处理入口函数 
+*/
 void AbControl::Paint( HDC hdcDst )
 {
 	Draw(hdcDst);
@@ -78,10 +83,6 @@ BOOL AbControl::AdjustRect( int xleft, int ytop )
 	return TRUE;
 }
 
-void AbControl::setCtrLayout( TiXmlElement * ele )
-{
-
-}
 
 void AbControl::setCtrRect( TiXmlElement * ele )
 {

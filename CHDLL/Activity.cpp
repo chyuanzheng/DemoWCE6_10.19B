@@ -2,6 +2,7 @@
 #include "../common/Activity.h"
 #include "../common/StrHelp.h"
 #include "../common/Button.h"
+#include "../common/Launch.h"
 #include "../common/XmlDef.h"
 //#include "aygshell.h"
 
@@ -14,17 +15,17 @@
 Activity::Activity()
 :m_pParentBoard(NULL)
 {
-	m_resID = 0;
-	pImageManager= CImagesManager::GetInstance();
+	m_handleBack = 0;
+	
 
 }
 
 
 Activity::~Activity ()
 {
-	if (m_resID!=0)
+	if (m_handleBack!=0)
 	{
-		pImageManager->RemoveImage(m_resID);
+		pImageManager->RemoveImage(m_handleBack);
 	}
 }
 
@@ -57,7 +58,7 @@ void  Activity::DestroyAllBoard()
 
 void Activity::Draw( HDC hdcDst )
 {
-	pImageManager->DrawAlphaImage(m_resID,hdcDst,NULL,&m_ActRect);
+	pImageManager->DrawAlphaImage(m_handleBack,hdcDst,NULL,&m_ActRect);
 }
 
 BOOL Activity::DlClick()
@@ -99,6 +100,9 @@ BOOL Activity::setContentView( const WCHAR* layout )
 	return TRUE;
 }
 
+/**控件根据 ele中的参数设置自己的属性
+   并递归设置子控件
+*/
 void Activity::setCtrLayout( TiXmlElement * ele )
 {
 	if (strcmp(ele->Value(), ABSOLUTE) != 0)
@@ -114,9 +118,9 @@ void Activity::setCtrLayout( TiXmlElement * ele )
 	AfxGetWorkPath(path);
 	path =  path + StrHelp::StringToWString(strTail);
 
-	m_resID = pImageManager->AddImage(path.c_str());
+	m_handleBack = pImageManager->AddImage(path.c_str());
 
-	if (m_resID==0)
+	if (m_handleBack==0)
 	{
 		ASSERT(0);
 		return;
@@ -135,7 +139,10 @@ void Activity::setCtrLayout( TiXmlElement * ele )
 		{
 			ctr = new Button;
 		}
-
+        if (ctrname == LAUNCH)
+        {
+			ctr = new Launch;
+        }
 		if (ctr)
 		{
 			AddCtrl(ctr);

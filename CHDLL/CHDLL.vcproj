@@ -380,6 +380,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\AppButton.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Button.cpp"
 				>
 			</File>
@@ -424,6 +428,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Launch.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\StrHelp.cpp"
 				>
 			</File>
@@ -450,7 +458,11 @@
 				>
 			</File>
 			<File
-				RelativePath="..\Common\button.h"
+				RelativePath="..\Common\AppButton.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Common\Button.h"
 				>
 			</File>
 			<File
@@ -487,6 +499,10 @@
 			</File>
 			<File
 				RelativePath="..\Common\ImagesManager.h"
+				>
+			</File>
+			<File
+				RelativePath="..\Common\Launch.h"
 				>
 			</File>
 			<File

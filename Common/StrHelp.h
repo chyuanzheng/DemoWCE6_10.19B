@@ -1,4 +1,5 @@
 #pragma once
+#pragma warning(disable:4244) //仅显示一个
 #include "DllDefine.h"
 #include "stdAfx.h"
 class CE_CONTROL_API StrHelp 

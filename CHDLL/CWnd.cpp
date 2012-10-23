@@ -52,7 +52,6 @@ BOOL CWnd::Create(LPCTSTR lpszClassName,LPCTSTR lpszWindowName,DWORD dwStyle,con
     m_hWnd =::CreateWindowEx(NULL, lpszClassName, lpszWindowName, dwStyle,
 		rect.left, rect.top, rect.right - rect.left, rect.bottom - rect.top,
 		hWndParent, NULL, AfxGetInstanceHandle(),NULL);
-	AbControl::m_hCtrlWnd = m_hWnd;
   
 	if (m_hWnd)
 	{
@@ -147,7 +146,7 @@ LRESULT CWnd::WindowProc(UINT message, WPARAM wParam, LPARAM lParam)
 			break;
 	}
 	
-    if(db->DealCtrlMsg(m_hWnd, message, wParam, lParam))
+    if(db->DealCtrlMsg(message, wParam, lParam))
     {
         return 0;
     }   
@@ -168,8 +167,6 @@ void  CWnd::OnPaint()
 	::BitBlt(hdc, 0,0,m_rect.right -m_rect.left,m_rect.bottom-m_rect.top,m_hdcDest,0,0,SRCCOPY);
 	//m_primarySurface->Blt(&m_rect,m_backSurface,&rect,DDBLT_WAITNOTBUSY,NULL);//
 	::EndPaint( m_hWnd, &ps );
-
-
 }
 
 
