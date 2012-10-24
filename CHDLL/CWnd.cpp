@@ -163,9 +163,15 @@ void  CWnd::OnPaint()
     PAINTSTRUCT ps;
 
 	HDC hdc = ::BeginPaint( m_hWnd, &ps );
+	DWORD time =::GetTickCount();
 	db->Paint(m_hdcDest);
+	time = ::GetTickCount()-time;
+	WCHAR  show[60];
+	wsprintf(show,L"time is :%d\r\n",time);
+	OutputDebugString(show);
 	::BitBlt(hdc, 0,0,m_rect.right -m_rect.left,m_rect.bottom-m_rect.top,m_hdcDest,0,0,SRCCOPY);
-	//m_primarySurface->Blt(&m_rect,m_backSurface,&rect,DDBLT_WAITNOTBUSY,NULL);//
+	
+
 	::EndPaint( m_hWnd, &ps );
 }
 

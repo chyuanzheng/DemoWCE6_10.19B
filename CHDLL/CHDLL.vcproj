@@ -95,7 +95,7 @@
 			/>
 			<DeploymentTool
 				ForceDirty="-1"
-				RemoteDirectory="\storage card"
+				RemoteDirectory="\storage card\"
 				RegisterOutput="0"
 				AdditionalFiles=""
 			/>
@@ -236,6 +236,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=" /subsystem:windowsce,5.02"
+				AdditionalDependencies="TinyXml.lib"
 				OutputFile="$(OutDir)/CHDLL.dll"
 				LinkIncremental="1"
 				DelayLoadDLLs="$(NOINHERIT)"
@@ -265,7 +266,7 @@
 			/>
 			<DeploymentTool
 				ForceDirty="-1"
-				RemoteDirectory=""
+				RemoteDirectory="\storage card"
 				RegisterOutput="0"
 				AdditionalFiles=""
 			/>

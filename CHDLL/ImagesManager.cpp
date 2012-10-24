@@ -154,8 +154,12 @@ BOOL CImagesManager::DrawAlphaImage( HANDLE ResID,HDC destDC,RECT* srcRC,RECT* d
 			SourceRECT.right = info->Width; SourceRECT.bottom = info->Height;
 		}
 		else SourceRECT = *srcRC;
-
+//DWORD time =::GetTickCount();
 		DrawAlphaImage(info->hBitMap,info->pixelformat,destDC,&SourceRECT,destRC,Alpha);
+		//time = ::GetTickCount()-time;
+		//WCHAR  show[60];
+		//wsprintf(show,L"time is :%d",time);
+		//OutputDebugString(show);
 
 		return TRUE;
 	}
