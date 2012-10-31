@@ -13,7 +13,16 @@
 #define  BTN_UP              "btn_up"
 #define  BTN_DOWN         "btn_down"
 
-#define  LAUNCH            "Launch"  
+#define  LAUNCH                   "Launch"  
+#define  UNIT_INTERVAL            "unit_interval" 
+#define  V_MARGIN                 "verticality_margin"
+#define  H_IVTERVAL               "horizontal_interval" //app的水平间隔
+#define  V_IVTERVAL               "verticality_interval" //app的垂直间隔
 
-#define  APP_BUTTON         "AppButton" 
+#define  APP_WIDTH                "app_width"
+#define  APP_HEIGHT               "app_height" 
+#define  H_NUM                    "h_num"
+#define  V_NUM                    "v_num"
+
+#define  APP_BUTTON               "AppButton" 
 

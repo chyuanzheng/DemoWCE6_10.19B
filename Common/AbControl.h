@@ -22,6 +22,11 @@ public:
 	void Paint(HDC hdcDst);//**
     BOOL AdjustRect(int xleft, int ytop);
 	void setCtrRect(TiXmlElement * ele);
+	void setLayer(int layer=0);//使得本控件不会被同级的覆盖。最多三层。 目前只支持两层
+	int  getLayer(){return m_nlayer;}
+	void getCtrRect( RECT & rt );
+	void setCtrRect(const RECT & rt );
+
 protected:
     //本控件的消息处理
 	virtual BOOL Response(  UINT nMsg, WPARAM wParam, LPARAM lParam ){return FALSE;}
@@ -30,8 +35,10 @@ protected:
 	BOOL	AddCtrl(AbControl* control);
 	RECT        m_ActRect;
     CImagesManager *pImageManager;
+	AbControl	 *m_ParentCtrl; //父控件  
+	ControlList  *m_pCtrlVet;//所有子控件
 private:
-	AbControl	*m_ParentCtrl;    
-	ControlList  *m_pCtrlVet;
+	int           m_nlayer;
+	
 };
 

@@ -7,7 +7,7 @@
 
 AbControl::AbControl()
 {
-
+    m_nlayer = 0;
 	pImageManager= CImagesManager::GetInstance();
 	m_pCtrlVet = new ControlList;
 }
@@ -57,8 +57,22 @@ void AbControl::Paint( HDC hdcDst )
 {
 	Draw(hdcDst);
 	ControlList::iterator pos;	
+	ControlList  highList;
 	pos = m_pCtrlVet->begin();
 	while(pos != m_pCtrlVet->end())
+	{
+		if ((*pos)->getLayer()>0)//目前只支持两层
+		{
+			highList.push_back(*pos);
+		}
+		else{
+			(*pos)->Paint( hdcDst );
+		}
+		pos++;
+	}
+
+	pos = highList.begin();
+	while(pos != highList.end())
 	{
 		(*pos)->Paint( hdcDst );
 		pos++;
@@ -86,7 +100,7 @@ BOOL AbControl::AdjustRect( int xleft, int ytop )
 
 void AbControl::setCtrRect( TiXmlElement * ele )
 {
-	int data;
+	int data =0;
 	ele->Attribute(LAYOUT_X,&data);
 	m_ActRect.left = data;
 
@@ -98,4 +112,20 @@ void AbControl::setCtrRect( TiXmlElement * ele )
 
 	ele->Attribute(LAYOUT_HEIGHT,&data);
 	m_ActRect.bottom =  data + m_ActRect.top;
+}
+
+void AbControl::setLayer( int layer/*=0*/ )
+{
+	ASSERT(layer>=0&&layer<3);
+	m_nlayer=layer;
+}
+
+void AbControl::getCtrRect( RECT & rt )
+{
+	 rt=m_ActRect;
+}
+
+void AbControl::setCtrRect( const RECT & rt )
+{
+	m_ActRect = rt;
 }
