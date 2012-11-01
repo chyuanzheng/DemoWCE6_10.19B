@@ -507,6 +507,10 @@
 				>
 			</File>
 			<File
+				RelativePath="..\Common\MesDef.h"
+				>
+			</File>
+			<File
 				RelativePath="..\Common\stdafx.cpp"
 				>
 			</File>

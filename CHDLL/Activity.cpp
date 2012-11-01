@@ -110,7 +110,7 @@ void Activity::setCtrLayout( TiXmlElement * ele )
 		return ;
 	}
 
-	setCtrRect(ele);
+	AbControl::setCtrLayout(ele);
 
 	string strTail = ele->Attribute(BACKGROUD);
 
@@ -152,3 +152,5 @@ void Activity::setCtrLayout( TiXmlElement * ele )
 
 	}
 }
+
+

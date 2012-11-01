@@ -2,6 +2,7 @@
 #include "../common/Button.h"
 #include "../common/StrHelp.h"
 #include "../common/XmlDef.h"
+#include "../common/MesDef.h"
 //#include "aygshell.h"
 
 Button::Button()
@@ -66,11 +67,6 @@ BOOL Button::Response( UINT nMsg, WPARAM wParam, LPARAM lParam )
 			//::SetCapture( m_hWnd );
 			m_isButtonDown = TRUE;
 			AfxValidateRect(&m_ActRect);
-			
-			if(m_nEventDown != 0)
-			{
-				//::PostMessage( m_hWnd, m_nEventDown, (WPARAM)this, 0 );
-			}
 			return TRUE;
 		}
 		return FALSE;
@@ -82,9 +78,9 @@ BOOL Button::Response( UINT nMsg, WPARAM wParam, LPARAM lParam )
 			//::ReleaseCapture();
 			m_isButtonDown = FALSE;
 			AfxValidateRect(&m_ActRect);
-			if( (m_nEventUp!=0) && InMyArea( LOWORD( lParam ), HIWORD( lParam ) ) )
+			if( InMyArea( LOWORD( lParam ), HIWORD( lParam ) ) )
 			{
-				//::PostMessage( m_hWnd, m_nEventUp, (WPARAM)this, 0 );
+				AfxPostMessage( CTR_MESSAGE, (WPARAM)this, MES_LBUTTONUP );
 			}
 			return TRUE;
 
@@ -98,7 +94,7 @@ BOOL Button::Response( UINT nMsg, WPARAM wParam, LPARAM lParam )
 void Button::setCtrLayout( TiXmlElement * ele )
 {
 
-	setCtrRect(ele);
+	 AbControl::setCtrLayout(ele);
 
 	wstring path;
 	AfxGetWorkPath(path);

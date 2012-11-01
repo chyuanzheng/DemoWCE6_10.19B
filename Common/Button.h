@@ -4,9 +4,6 @@
 class CE_CONTROL_API Button : public AbControl
 {
 protected:
-	//ÊÂ¼þ
-	UINT     m_nEventUp;
-    UINT     m_nEventDown;
 	HANDLE     m_handleUp;
 	HANDLE     m_handleDown;
 	//°´Å¥Í¼Æ¬

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout  
+       layout_x="0"
+       layout_y="0"
+       layout_width="800"
+       layout_height="480"
+       background="res\back1.png"
+>
+
+       <Button
+            name="test_btn" 
+            layout_x="10"
+            layout_y="10"
+            layout_width="44"
+            layout_height="29"
+            btn_down = "\res\home1.png"
+            btn_up = "\res\home2.png"
+        />
+  
+       <!--  unit_interval 每一版的间隔 
+             verticality_margin 每一版的与上下的距离
+             每一版的app个数是h_num×v_num个。
+       -->
+       <Launch
+            layout_x="0"
+            layout_y="0"
+            layout_width="800"
+            layout_height="480"
+            
+            
+            unit_interval="200"
+            horizontal_interval="40"
+            verticality_margin="80"
+            verticality_interval="37"
+                                  
+            app_width="120"
+            app_height="82"
+            
+            h_num="4"
+            v_num="3"
+
+>
+            <AppButton           
+                 name="app_btn1"            
+                 btn_up = "\res\app1.png"
+            />
+            <AppButton            
+                 name="app_btn2"            
+                 btn_up = "\res\app2.png"
+            />
+            <AppButton            
+                 name="app_btn3"
+                 btn_up = "\res\app3.png"
+            />
+            <AppButton             
+                 name="app_btn4"            
+                 btn_up = "\res\app4.png"
+            />
+            <AppButton           
+                 name="app_btn5"            
+                 btn_up = "\res\app5.png"
+            />
+            <AppButton           
+                 name="app_btn6"            
+                 btn_up = "\res\app6.png"
+            />
+             <AppButton
+                  name="app_btn4"
+                  btn_up = "\res\app7.png"
+                />
+             <AppButton
+                  name="app_btn5"
+                  btn_up = "\res\app8.png"
+                />
+             <AppButton
+                  name="app_btn6"
+                  btn_up = "\res\app9.png"
+                />
+         <AppButton
+              name="app_btn7"
+              btn_up = "\res\app10.png"
+                />
+         <AppButton
+              name="app_btn8"
+              btn_up = "\res\app0.png"
+                />
+         <AppButton
+              name="app_btn9"
+              btn_up = "\res\app2.png"
+                />
+         <AppButton
+              name="app_btn1"
+              btn_up = "\res\app1.png"
+            />
+         <AppButton
+              name="app_btn2"
+              btn_up = "\res\app2.png"
+            />
+         <AppButton
+              name="app_btn3"
+              btn_up = "\res\app3.png"
+            />
+         <AppButton
+              name="app_btn4"
+              btn_up = "\res\app4.png"
+            />
+         <AppButton
+              name="app_btn5"
+              btn_up = "\res\app5.png"
+            />
+         <AppButton
+              name="app_btn6"
+              btn_up = "\res\app6.png"
+            />
+         <AppButton
+              name="app_btn4"
+              btn_up = "\res\app7.png"
+                />
+         <AppButton
+              name="app_btn5"
+              btn_up = "\res\app8.png"
+                />
+         <AppButton
+              name="app_btn6"
+              btn_up = "\res\app9.png"
+                />
+       </Launch>
+
+</AbsoluteLayout>

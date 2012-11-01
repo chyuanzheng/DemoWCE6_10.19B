@@ -98,22 +98,6 @@ BOOL AbControl::AdjustRect( int xleft, int ytop )
 }
 
 
-void AbControl::setCtrRect( TiXmlElement * ele )
-{
-	int data =0;
-	ele->Attribute(LAYOUT_X,&data);
-	m_ActRect.left = data;
-
-	ele->Attribute(LAYOUT_Y,&data);
-	m_ActRect.top =  data;
-
-	ele->Attribute(LAYOUT_WIDTH,&data);
-	m_ActRect.right =  data + m_ActRect.left;
-
-	ele->Attribute(LAYOUT_HEIGHT,&data);
-	m_ActRect.bottom =  data + m_ActRect.top;
-}
-
 void AbControl::setLayer( int layer/*=0*/ )
 {
 	ASSERT(layer>=0&&layer<3);
@@ -128,4 +112,53 @@ void AbControl::getCtrRect( RECT & rt )
 void AbControl::setCtrRect( const RECT & rt )
 {
 	m_ActRect = rt;
+}
+
+void AbControl::setCtrLayout( TiXmlElement * ele )
+{
+
+	
+	int data =0;
+	const CHAR *elename = ele->Attribute(CTR_NAME);
+	if (NULL!=elename)
+	{
+		m_name=elename;
+	}
+	ele->Attribute(LAYOUT_X,&data);
+	m_ActRect.left = data;
+
+	ele->Attribute(LAYOUT_Y,&data);
+	m_ActRect.top =  data;
+
+	ele->Attribute(LAYOUT_WIDTH,&data);
+	m_ActRect.right =  data + m_ActRect.left;
+
+	ele->Attribute(LAYOUT_HEIGHT,&data);
+	m_ActRect.bottom =  data + m_ActRect.top;
+
+}
+
+AbControl * AbControl::findViewByName( const CHAR* vname )
+{
+	ASSERT(vname!=NULL);
+	ControlList::iterator pos;	
+	string ctrname;
+	pos = m_pCtrlVet->begin();
+	AbControl * pctr=NULL;
+	while(pos != m_pCtrlVet->end())
+	{
+		ctrname=(*pos)->getCtrName();
+        if (ctrname==vname)
+        {
+			pctr = (*pos);;
+			break;
+        }
+		pctr =(*pos)->findViewByName(vname);
+		if (NULL!=pctr)
+		{
+			break;
+		}
+		pos++;
+	}
+	return pctr;
 }

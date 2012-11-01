@@ -122,3 +122,8 @@ CE_CONTROL_API HWND AfxGetHWND()
 {
 	return AFX_MODULE_STATE::m_s_pInstance->m_wnd ;
 }
+
+CE_CONTROL_API BOOL AfxPostMessage( UINT nMsg, WPARAM wParam, LPARAM lParam )
+{
+	return PostMessage(AFX_MODULE_STATE::m_s_pInstance->m_wnd, nMsg, wParam, lParam);
+}

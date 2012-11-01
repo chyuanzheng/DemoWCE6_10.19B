@@ -26,6 +26,7 @@ protected:
 	void    DestroyBoard();
     void    DestroyAllBoard();
     BOOL    DlClick();
+	
     
 private:
     Activity *m_pParentBoard;

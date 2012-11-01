@@ -162,7 +162,7 @@ BOOL AppButton::Response( UINT nMsg, WPARAM wParam, LPARAM lParam )
 void AppButton::setCtrLayout( TiXmlElement * ele )
 {
 
-	setCtrRect(ele);
+	 AbControl::setCtrLayout(ele);
 
 	wstring path;
 	AfxGetWorkPath(path);

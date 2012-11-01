@@ -48,3 +48,4 @@ CE_CONTROL_API Activity* AfxGetActiviy();
 
 CE_CONTROL_API void  AfxSetHWND(HWND  hwnd);
 CE_CONTROL_API HWND  AfxGetHWND();
+CE_CONTROL_API BOOL  AfxPostMessage( UINT nMsg, WPARAM wParam, LPARAM lParam );

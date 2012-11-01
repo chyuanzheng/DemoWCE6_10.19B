@@ -3,6 +3,7 @@
 #define  ABSOLUTE           "AbsoluteLayout"
 #define  BACKGROUD          "background"
 
+#define  CTR_NAME            "name"
 #define  LAYOUT_X            "layout_x" 
 #define  LAYOUT_Y            "layout_y"
 #define  LAYOUT_WIDTH        "layout_width"

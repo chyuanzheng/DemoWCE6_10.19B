@@ -74,7 +74,7 @@ BOOL Launch::Response( UINT nMsg, WPARAM wParam, LPARAM lParam )
 void Launch::setCtrLayout( TiXmlElement * ele )//这里要进行检查，下次补上
 {
 
-	setCtrRect(ele);
+	 AbControl::setCtrLayout(ele);
 
 
     int uitv,hitv,vitv;
