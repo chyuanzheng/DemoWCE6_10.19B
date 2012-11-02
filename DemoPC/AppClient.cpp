@@ -3,7 +3,7 @@
 
 AppClient::AppClient( const SOCKET sClient,const sockaddr_in &addrClient )
 {
-	m_socket=sClient;
+	m_sClient=sClient;
 	m_addr=addrClient;
 }
 
@@ -13,26 +13,15 @@ AppClient::~AppClient()
 }
 
 
-BOOL AppClient::StartRuning( void )
+BOOL AppClient::RecvData( void )
 {
-	m_bConning = TRUE; 
-
-	unsigned long ulThreadId;
-	HANDLE hThread = CreateThread(NULL, 0, RecvDataThread, this, 0, &ulThreadId);
-	if(NULL == hThread)
+	char			buf[64];	//接收数据缓冲区
+	int nReadLen = recv(m_sClient, buf, 64, 0);				//每次接收一个字符
+	if (SOCKET_ERROR == nReadLen)
 	{
 		return FALSE;
-	}else{
-		CloseHandle(hThread);
 	}
 	return TRUE;
-}
-
-DWORD WINAPI AppClient::RecvDataThread( LPVOID lpParameter )
-{
-	AppClient *ac = (AppClient *)lpParameter;
-	return 0;
-
 }
 
 

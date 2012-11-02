@@ -12,7 +12,7 @@ CCommonApp myApp;
 
 BOOL CCommonApp::InitInstance ()
 {
-	AfxShowTaskBar(FALSE);
+	//AfxShowTaskBar(FALSE);
     m_pMainWnd = new CCommonWnd;
 	if (!InitActivity(L"layout\\WinceManifest.xml"))// concrete code ,adjusts later
 	{
